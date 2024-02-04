@@ -55,7 +55,9 @@ const Perfil = () => {
   };
 
   return (
-    <section className="container max-w-[1200px] mx-auto my-20">
+    <section className="container max-w-[1200px] mx-auto my-10">  
+      <h2 className="px-4 pb-3 font-bold cursor-pointer" onClick={() => navigate(-1)}>{'< Volver Atrás'}</h2>
+
       <div className="lg:flex items-start gap-10 px-4">
         <div className="border-gray-300 border p-7 shadow-lg shadow-black/35  rounded">
           <div className="text-xl text-center">

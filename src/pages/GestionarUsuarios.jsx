@@ -83,7 +83,6 @@ const GestionarUsuarios = () => {
                   <InputForm
                     labelText={"Imagen"}
                     inputProps={{
-                      required: true,
                       type: "text",
                       placeholder: "Imagen",
                       name: "perfilImagen",
@@ -94,22 +93,24 @@ const GestionarUsuarios = () => {
 
               <div className="flex md:flex-row flex-col gap-7">
                 <div className="flex-1">
-                  <InputForm
-                    labelText={"Documento de Identidad"}
-                    inputProps={{
-                      required: true,
-                      type: "text",
-                      placeholder: "DNI / CE / OTRO",
-                      name: "documentoIdentidad",
-                    }}
-                  />
+                <SelectForm
+                      textDefault={"Seleccione Documento de ID"}
+                      labelText={"Documento de Identidad"}
+                      options={[
+                        { value: "dni", text: "DNI" },
+                        { value: "cd", text: "CE" },
+                        { value: "otro", text: "OTRO" },
+                      ]}
+                      required={true}
+                      selectName="documentoIdentidad"
+                    />
+
                 </div>
 
                 <div className="flex-1">
                   <InputForm
                     labelText={"Número de Documento de Identidad"}
                     inputProps={{
-                      required: true,
                       type: "text",
                       placeholder: "A1111111111C",
                       name: "numeroDocIdentidad",
@@ -123,7 +124,6 @@ const GestionarUsuarios = () => {
                   <InputForm
                     labelText={"Código"}
                     inputProps={{
-                      required: true,
                       type: "number",
                       placeholder: "123456",
                       name: "codigo",
@@ -161,7 +161,6 @@ const GestionarUsuarios = () => {
                   <InputForm
                     labelText={"Segundo Nombre"}
                     inputProps={{
-                      required: true,
                       type: "text",
                       placeholder: "Segundo Nombre",
                       name: "segundoNombre",
@@ -175,7 +174,6 @@ const GestionarUsuarios = () => {
                   <InputForm
                     labelText={"Apellido Paterno"}
                     inputProps={{
-                      required: true,
                       type: "text",
                       placeholder: "Apellido Paterno",
                       name: "apellidoPaterno",
@@ -187,7 +185,6 @@ const GestionarUsuarios = () => {
                   <InputForm
                     labelText={"Apellido Materno"}
                     inputProps={{
-                      required: true,
                       type: "text",
                       placeholder: "Apellido Materno",
                       name: "apellidoMaterno",
@@ -201,7 +198,6 @@ const GestionarUsuarios = () => {
                   <InputForm
                     labelText={"Fecha de Nacimiento"}
                     inputProps={{
-                      required: true,
                       type: "date",
                       name: "fechaNacimiento",
                     }}
