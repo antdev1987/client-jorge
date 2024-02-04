@@ -93,22 +93,23 @@ const EditarPerfil = () => {
                 defaultValue: location.state?.perfilImagen,
                 placeholder: "Imagen",
                 name: "perfilImagen",
-                required: userInfo.isAdmin,
               }}
             />
           </div>
 
           <div className="md:flex gap-7">
             <div className="flex-1">
-              <InputForm
+              <SelectForm
+                textDefault={"Seleccione Documento de ID"}
                 labelText={"Documento de Identidad"}
-                inputProps={{
-                  disabled: !userInfo.isAdmin,
-                  defaultValue: location.state?.documentoIdentidad,
-                  type: "text",
-                  placeholder: "DNI / CE / OTRO",
-                  name: "documentoIdentidad",
-                }}
+                options={[
+                  { value: "dni", text: "DNI" },
+                  { value: "cd", text: "CE" },
+                  { value: "otro", text: "OTRO" },
+                ]}
+                defaultValue={location.state?.documentoIdentidad}
+                required={true}
+                selectName="documentoIdentidad"
               />
             </div>
 
@@ -214,15 +215,15 @@ const EditarPerfil = () => {
 
           <div className="md:flex-row flex-col flex gap-7 mt-4">
             <div className="flex-1">
-              <InputForm
+              <SelectForm
+                textDefault={"Seleccione Sexo"}
                 labelText={"Sexo"}
-                inputProps={{
-                  disabled: !userInfo.isAdmin,
-                  type: "text",
-                  placeholder: "Sexo",
-                  defaultValue: location.state?.sexo,
-                  name: "sexo",
-                }}
+                options={[
+                  { value: "hombre", text: "Hombre" },
+                  { value: "mujer", text: "Mujer" },
+                ]}
+                defaultValue={location.state?.sexo}
+                selectName="sexo"
               />
             </div>
 

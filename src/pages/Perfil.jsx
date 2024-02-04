@@ -261,15 +261,6 @@ const Perfil = () => {
               </h4>
             )}
 
-            {userPerfilInfo?.numeroDocIdentidad && (
-              <h4 className="font-bold mt-4">
-                Número de Documento de Identidad:{" "}
-                <span className="font-normal block ms-5">
-                  {userPerfilInfo?.numeroDocIdentidad}
-                </span>
-              </h4>
-            )}
-
             {userPerfilInfo?.telefono2 && (
               <h4 className="font-bold mt-4">
                 Teléfono 2:{" "}

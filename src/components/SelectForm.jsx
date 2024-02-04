@@ -4,7 +4,8 @@ const SelectForm = ({
   labelText,
   options,
   onChange,
-  required
+  required,
+  defaultValue
 }) => {
   return (
     <label>
@@ -14,6 +15,7 @@ const SelectForm = ({
         className="block w-full py-2 px-3 text-gray-800 border-gray-700 border-b outline-none mt-1"
         onChange={onChange}
         required={required}
+        defaultValue={defaultValue}
       >
         <option value="">-- {textDefault} --</option>
         {options?.map((option) => {
