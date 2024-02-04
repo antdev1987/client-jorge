@@ -40,7 +40,7 @@ export const Table = ({ columns, data, filtering, setFiltering }) => {
                     className="group table-cell cursor-pointer"
                     onClick={header.column.getToggleSortingHandler()}
                   >
-                    <div className="flex items-center gap-2 justify-between pr-2">
+                    <div className="text-start gap-2 pr-2">
                       {header.isPlaceholder
                         ? null
                         : flexRender(

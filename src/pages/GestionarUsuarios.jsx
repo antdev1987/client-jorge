@@ -71,7 +71,7 @@ const GestionarUsuarios = () => {
 
   return (
     <section>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <div className="my-5">
           <ModalComponent
             textBtn={"Crear Usuario"}
@@ -233,10 +233,19 @@ const GestionarUsuarios = () => {
 
         {loading && <h2>Loading...</h2>}
 
-        <input type="text" onChange={(e) => setFiltering(e.target.value)} />
+        <input
+          type="text"
+          className="text-black placeholder:text-gray-500 border border-gray-400 mb-4 py-1 px-3 rounded"
+          placeholder="Buscar..."
+          onChange={(e) => setFiltering(e.target.value)}
+        />
 
         {users.length > 0 && (
-          <Table
+          <div className="w-full overflow-auto">
+            <div className="" style={{
+              minWidth: "600px"
+            }}>
+              <Table
             data={users}
             setFiltering={setFiltering}
             filtering={filtering}
@@ -257,7 +266,7 @@ const GestionarUsuarios = () => {
                   return (
                     <Link
                       to={`/perfil/${value._id}`}
-                      className="bg-blue-600 text-white px-2 py-1 rounded font-bold"
+                      className="bg-blue-600 text-white px-2 py-1 rounded font-bold text-nowrap"
                     >
                       Ver Usuario
                     </Link>
@@ -266,6 +275,8 @@ const GestionarUsuarios = () => {
               },
             ]}
           />
+            </div>
+          </div>
         )}
       </div>
     </section>
