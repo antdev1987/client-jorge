@@ -9,9 +9,9 @@ import axios from "axios";
 
 const EditarPerfil = () => {
   const { userInfo } = useContext(AppContext);
-  const [sectorLaboral, setSectorLaboral] = useState("");
-  const navigate = useNavigate();
   const location = useLocation();
+  const [sectorLaboral, setSectorLaboral] = useState(location.state?.sectorLaboral);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const handleEditarPerfil = async (e) => {
@@ -49,7 +49,9 @@ const EditarPerfil = () => {
         userData.email = formData.get("email");
         userData.sexo = formData.get("sexo");
         userData.perfilImagen = formData.get("perfilImagen");
+        userData.fechaNacimiento = formData.get("fechaNacimiento");
 
+        console.log(userData)
         await axios.put(
           `${import.meta.env.VITE_BASE_URL}/users/perfil-editar-admin/${
             location.state._id
@@ -249,6 +251,7 @@ const EditarPerfil = () => {
                   type: "text",
                   placeholder: "Dirección",
                   name: "direccion",
+                  defaultValue: location.state?.direccion
                 }}
               />
             </div>
@@ -260,6 +263,7 @@ const EditarPerfil = () => {
                   type: "text",
                   placeholder: "Urbanización",
                   name: "urbanizacion",
+                  defaultValue: location.state?.urbanizacion
                 }}
               />
             </div>
@@ -273,6 +277,8 @@ const EditarPerfil = () => {
                   type: "text",
                   placeholder: "Distrito",
                   name: "distrito",
+                  defaultValue: location.state?.distrito
+
                 }}
               />
             </div>
@@ -284,6 +290,8 @@ const EditarPerfil = () => {
                   type: "text",
                   placeholder: "Provincia",
                   name: "provincia",
+                  defaultValue: location.state?.provincia
+
                 }}
               />
             </div>
@@ -295,6 +303,8 @@ const EditarPerfil = () => {
                   type: "text",
                   placeholder: "Departamento",
                   name: "departamento",
+                  defaultValue: location.state?.departamento
+
                 }}
               />
             </div>
@@ -308,6 +318,8 @@ const EditarPerfil = () => {
                   type: "number",
                   placeholder: "Teléfono 1 (WhatsApp)",
                   name: "telefono1WhatsApp",
+                  defaultValue: location.state?.telefono1WhatsApp
+
                 }}
               />
             </div>
@@ -319,6 +331,8 @@ const EditarPerfil = () => {
                   type: "number",
                   placeholder: "Teléfono 2",
                   name: "telefono2",
+                  defaultValue: location.state?.telefono2
+
                 }}
               />
             </div>
@@ -336,6 +350,7 @@ const EditarPerfil = () => {
                   { value: "publico", text: "Público" },
                   { value: "privado", text: "Privado" },
                 ]}
+                defaultValue={location.state?.sectorLaboral}
               />
             </div>
 
@@ -348,6 +363,7 @@ const EditarPerfil = () => {
                   type: "text",
                   placeholder: "Centro Laboral",
                   name: "centroLaboral",
+                  defaultValue: location.state?.centroLaboral
                 }}
               />
             </div>
@@ -361,6 +377,7 @@ const EditarPerfil = () => {
                   type: "text",
                   placeholder: "Cargo",
                   name: "cargo",
+                  defaultValue: location.state?.cargo
                 }}
               />
             </div>
@@ -374,6 +391,8 @@ const EditarPerfil = () => {
                   type: "text",
                   placeholder: "Giro o rubro del centro laboral",
                   name: "giroRubroCentroLaboral",
+                  defaultValue: location.state?.giroRubroCentroLaboral
+
                 }}
               />
             </div>
@@ -385,6 +404,8 @@ const EditarPerfil = () => {
                   type: "text",
                   placeholder: "Deportes que practica",
                   name: "deportePractica",
+                  defaultValue: location.state?.deportePractica
+
                 }}
               />
             </div>
@@ -398,6 +419,8 @@ const EditarPerfil = () => {
                   type: "number",
                   placeholder: "Hijos menores de edad hombre(s)",
                   name: "hijosMenoresMasculino",
+                  defaultValue: location.state?.hijosMenoresMasculino
+
                 }}
               />
             </div>
@@ -409,6 +432,8 @@ const EditarPerfil = () => {
                   type: "number",
                   placeholder: "Hijos menores de edad mujer(es)",
                   name: "hijosMenoresFemenino",
+                  defaultValue: location.state?.hijosMenoresFemenino
+
                 }}
               />
             </div>

@@ -13,6 +13,8 @@ const Perfil = () => {
   const navigate = useNavigate();
   const params = useParams();
 
+  console.log(userPerfilInfo);
+
   useEffect(() => {
     const fetchPerfilData = async () => {
       try {
@@ -55,19 +57,31 @@ const Perfil = () => {
   };
 
   return (
-    <section className="container max-w-[1200px] mx-auto my-10">  
-      <h2 className="px-4 pb-3 font-bold cursor-pointer" onClick={() => navigate(-1)}>{'< Volver Atrás'}</h2>
+    <section className="container max-w-[1200px] mx-auto my-10">
+      <h2
+        className="px-4 pb-3 font-bold cursor-pointer"
+        onClick={() => navigate(-1)}
+      >
+        {"< Volver Atrás"}
+      </h2>
 
       <div className="lg:flex items-start gap-10 px-4">
         <div className="border-gray-300 border p-7 shadow-lg shadow-black/35  rounded">
           <div className="text-xl text-center">
             <div>
-              <img className="w-[5rem] h-[5rem] mx-auto rounded-full object-cover" src={userPerfilInfo?.perfilImagen || userInfo?.perfilImagen || UserAvatar} />
+              <img
+                className="w-[5rem] h-[5rem] mx-auto rounded-full object-cover"
+                src={
+                  userPerfilInfo?.perfilImagen ||
+                  userInfo?.perfilImagen ||
+                  UserAvatar
+                }
+              />
             </div>
 
             <div className="my-2">
               <h2 className="font-bold">
-                {userPerfilInfo?.primerNombre} {userPerfilInfo?.primerNombre}
+                {userPerfilInfo?.primerNombre} {userPerfilInfo?.segundoNombre}
               </h2>
               <h2 className="font-bold">{userPerfilInfo?.email}</h2>
             </div>
@@ -186,6 +200,15 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
+
+            {userPerfilInfo?.sectorLaboral && (
+              <h4 className="font-bold mt-4">
+                Sector Laboral:{" "}
+                <span className="font-normal block ms-5">
+                  {userPerfilInfo?.sectorLaboral}
+                </span>
+              </h4>
+            )}
           </div>
 
           <div>
@@ -266,6 +289,24 @@ const Perfil = () => {
                 Teléfono 2:{" "}
                 <span className="font-normal block ms-5">
                   {userPerfilInfo?.telefono2}
+                </span>
+              </h4>
+            )}
+
+            {userPerfilInfo?.fechaNacimiento && (
+              <h4 className="font-bold mt-4">
+                Fecha de Nacimiento:{" "}
+                <span className="font-normal block ms-5">
+                  {userPerfilInfo?.fechaNacimiento}
+                </span>
+              </h4>
+            )}
+
+            {userPerfilInfo?.urbanizacion && (
+              <h4 className="font-bold mt-4">
+                Urbanizacion:{" "}
+                <span className="font-normal block ms-5">
+                  {userPerfilInfo?.urbanizacion}
                 </span>
               </h4>
             )}
