@@ -255,7 +255,8 @@ const GestionarUsuarios = () => {
                 accessorKey: "codigo",
               },
               { header: "Email", accessorKey: "email" },
-              { header: "Documento Identidad", accessorKey: "documentoIdentidad" },
+              { header: "Número del Documento", accessorKey: "numeroDocIdentidad" },
+              // numeroDocIdentidad
 
               {
                 header: "Acción",
