@@ -225,6 +225,7 @@ const EditarPerfil = () => {
                   { value: "mujer", text: "Mujer" },
                 ]}
                 defaultValue={location.state?.sexo}
+                disabled={!userInfo.isAdmin}
                 selectName="sexo"
               />
             </div>
@@ -234,7 +235,7 @@ const EditarPerfil = () => {
                 labelText={"Fecha de Nacimiento"}
                 inputProps={{
                   disabled: !userInfo.isAdmin,
-                  type: "text",
+                  type: "date",
                   placeholder: "Fecha de Nacimiento",
                   defaultValue: location.state?.fechaNacimiento,
                   name: "fechaNacimiento",

@@ -58,12 +58,14 @@ const Perfil = () => {
 
   return (
     <section className="container max-w-[1200px] mx-auto my-10">
-      <h2
-        className="px-4 pb-3 font-bold cursor-pointer"
-        onClick={() => navigate(-1)}
-      >
-        {"< Volver Atrás"}
-      </h2>
+      {userInfo.isAdmin && params.perfilId && (
+        <h2
+          className="px-4 pb-3 font-bold cursor-pointer"
+          onClick={() => navigate(-1)}
+        >
+          {"< Volver Atrás"}
+        </h2>
+      )}
 
       <div className="lg:flex items-start gap-10 px-4">
         <div className="border-gray-300 border p-7 shadow-lg shadow-black/35  rounded">
@@ -119,7 +121,6 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
             {userPerfilInfo?.sexo && (
               <h4 className="font-bold">
                 Sexo:{" "}
@@ -128,7 +129,6 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
             {userPerfilInfo?.documentoIdentidad && (
               <h4 className="font-bold mt-4">
                 Documento de Identidad:{" "}
@@ -137,7 +137,6 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
             {userPerfilInfo?.cargo && (
               <h4 className="font-bold mt-4">
                 Cargo:{" "}
@@ -146,7 +145,6 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
             {userPerfilInfo?.codigo && (
               <h4 className="font-bold mt-4">
                 Código:{" "}
@@ -155,7 +153,6 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
             {userPerfilInfo?.direccion && (
               <h4 className="font-bold mt-4">
                 Dirección:{" "}
@@ -164,7 +161,6 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
             {userPerfilInfo?.distrito && (
               <h4 className="font-bold mt-4">
                 Distrito:{" "}
@@ -173,7 +169,6 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
             {userPerfilInfo?.hijosMenoresMasculino && (
               <h4 className="font-bold mt-4">
                 Hijos Menores Masculino:{" "}
@@ -182,7 +177,7 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
+            pagina-principal
             {userPerfilInfo?.provincia && (
               <h4 className="font-bold mt-4">
                 Provincia:{" "}
@@ -191,7 +186,6 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
             {userPerfilInfo?.telefono1WhatsApp && (
               <h4 className="font-bold mt-4">
                 Teléfono 1 WhatsApp:{" "}
@@ -200,7 +194,6 @@ const Perfil = () => {
                 </span>
               </h4>
             )}
-
             {userPerfilInfo?.sectorLaboral && (
               <h4 className="font-bold mt-4">
                 Sector Laboral:{" "}

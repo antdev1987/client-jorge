@@ -246,12 +246,17 @@ const GestionarUsuarios = () => {
             setFiltering={setFiltering}
             filtering={filtering}
             columns={[
-              {
-                header: "Número de Identidad",
-                accessorKey: "numeroDocIdentidad",
-              },
               { header: "Nombre", accessorKey: "primerNombre" },
+              { header: "Segundo Nombre", accessorKey: "segundoNombre" },
+              { header: "Apellido Paterno", accessorKey: "apellidoPaterno" },
+              { header: "Apellido Materno", accessorKey: "apellidoMaterno" },
+              {
+                header: "Código",
+                accessorKey: "codigo",
+              },
               { header: "Email", accessorKey: "email" },
+              { header: "Documento Identidad", accessorKey: "documentoIdentidad" },
+
               {
                 header: "Acción",
 

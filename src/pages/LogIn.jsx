@@ -32,7 +32,7 @@ const LogIn = () => {
         userData
       );
       setUserInfo(data);
-      navigate("/pagina-principal");
+      navigate("/perfil");
       toast.success("Accedido exitosamente!");
       localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (error) {

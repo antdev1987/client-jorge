@@ -24,9 +24,9 @@ const Root = () => {
         <div className="container mx-auto">
           <div className="flex justify-between items-center">
             {/* Logo */}
-            <Link to={"/pagina-principal"}>
+            <Link to={"/perfil"}>
               <h2 className="italic uppercase text-lg tracking-widest">
-                Logo Aquí
+                Actualización de Información
               </h2>
             </Link>
 
@@ -39,7 +39,10 @@ const Root = () => {
                 type="button"
                 onClick={() => setShowDropDown(!showDropDown)}
               >
-                <img className="w-[3rem] h-[3rem] rounded-full object-cover" src={userInfo?.perfilImagen || UserAvatar} />
+                <img
+                  className="w-[3rem] h-[3rem] rounded-full object-cover"
+                  src={userInfo?.perfilImagen || UserAvatar}
+                />
               </button>
 
               {showDropDown && (

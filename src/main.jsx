@@ -17,7 +17,6 @@ import NewPassword from "./pages/NewPassword";
 import GestionarUsuarios from "./pages/GestionarUsuarios";
 import EditarPerfil from "./pages/Editar-Perfil";
 import Perfil from "./pages/Perfil";
-import PaginaPrincipal from "./pages/PaginaPrincipal";
 
 // Rutas privadas y publicas
 import PublicRoutes from "./auth/PublicRoutes";
@@ -52,11 +51,6 @@ const router = createBrowserRouter([
       {
         element: <Root />,
         children: [
-          {
-            path: "/pagina-principal",
-            element: <PaginaPrincipal />,
-          },
-
           {
             path: "/perfil/:perfilId?",
             element: <Perfil />,

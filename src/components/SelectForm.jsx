@@ -5,7 +5,8 @@ const SelectForm = ({
   options,
   onChange,
   required,
-  defaultValue
+  defaultValue,
+  disabled
 }) => {
   return (
     <label>
@@ -16,6 +17,7 @@ const SelectForm = ({
         onChange={onChange}
         required={required}
         defaultValue={defaultValue}
+        disabled={disabled}
       >
         <option value="">-- {textDefault} --</option>
         {options?.map((option) => {
