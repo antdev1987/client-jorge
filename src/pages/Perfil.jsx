@@ -123,7 +123,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Código de Colegiatura:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.codigo || "No hay dato"}
                   </span>
                 </h4>
@@ -146,7 +146,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Fecha de Incorporación:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.fechaIncorporacion
                       ? formatDateSinHora(userPerfilInfo?.fechaIncorporacion)
                       : "No hay dato"}
@@ -169,7 +169,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Condición:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.condicion || "No hay dato"}
                   </span>
                 </h4>
@@ -190,7 +190,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Observaciones:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.observaciones || "No hay dato"}
                   </span>
                 </h4>
@@ -227,7 +227,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Apellido Paterno:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.apellidoPaterno || "No hay dato"}
                   </span>
                 </h4>
@@ -236,7 +236,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Apellido Materno:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.apellidoMaterno || "No hay dato"}
                   </span>
                 </h4>
@@ -258,7 +258,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Fecha de Nacimiento:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.fechaNacimiento
                       ? formatDateSinHora(userPerfilInfo?.fechaNacimiento)
                       : "No hay dato"}
@@ -281,7 +281,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Urbanización:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.urbanizacion || "No hay dato"}
                   </span>
                 </h4>
@@ -302,7 +302,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Provincia:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.provincia || "No hay dato"}
                   </span>
                 </h4>
@@ -335,7 +335,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Teléfono 1:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.telefono1WhatsApp || "No hay dato"}
                   </span>
                 </h4>
@@ -344,7 +344,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Teléfono 2:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.telefono2 || "No hay dato"}
                   </span>
                 </h4>
@@ -356,7 +356,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Hijos Menores Hombre(s):{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.hijosMenoresMasculino || "No hay dato"}
                   </span>
                 </h4>
@@ -365,7 +365,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Hijos Menores Mujer(s):{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.hijosMenoresFemenino || "No hay dato"}
                   </span>
                 </h4>
@@ -377,7 +377,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Deportes:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.deportePractica || "No hay dato"}
                   </span>
                 </h4>
@@ -386,7 +386,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Pasatiempos:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.pasaTiempos || "No hay dato"}
                   </span>
                 </h4>
@@ -402,7 +402,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Universidad:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.universidad || "No hay dato"}
                   </span>
                 </h4>
@@ -411,7 +411,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Título Universitario:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.tituloUniversitario || "No hay dato"}
                   </span>
                 </h4>
@@ -423,7 +423,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Fecha de Titulación:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.fechaTitulacion
                       ? formatDateSinHora(userPerfilInfo?.fechaTitulacion)
                       : "No hay dato"}
@@ -434,7 +434,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Máximo Grado Académico:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.maximoGradoAcademico || "No hay dato"}
                   </span>
                 </h4>
@@ -446,7 +446,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Estudios de Posgrado:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.estudiosPosgrado || "No hay dato"}
                   </span>
                 </h4>
@@ -462,7 +462,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Sector:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.sectorLaboral || "No hay dato"}
                   </span>
                 </h4>
@@ -471,7 +471,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Cargo:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.cargo || "No hay dato"}
                   </span>
                 </h4>
@@ -483,7 +483,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Centro Laboral:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.centroLaboral || "No hay dato"}
                   </span>
                 </h4>
@@ -492,7 +492,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Giro ó Rubro:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.giroRubroCentroLaboral || "No hay dato"}
                   </span>
                 </h4>
@@ -504,7 +504,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500] mb-4">
                   Fecha de Inicio:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.fechaInicio
                       ? formatDateSinHora(userPerfilInfo?.fechaInicio)
                       : "No hay dato"}
