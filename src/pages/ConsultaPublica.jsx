@@ -40,9 +40,7 @@ const ConsultaPublica = () => {
 
   return (
     <section className="container mx-auto px-3">
-      <h2 className="text-center text-[2rem] my-5">Consulta Pública</h2>
-
-      <div className="flex justify-center text-center">
+      <div className="flex justify-center text-center mt-8">
         <input
           type="text"
           className="text-black placeholder:text-gray-500 border border-gray-400 mb-4 py-1 px-3 rounded"
@@ -94,7 +92,25 @@ const ConsultaPublica = () => {
                       <ModalComponent
                         className="text-blue-500"
                         textBtn={<FaRegEye />}
-                        titleModal={"Vista Previa Usuario"}
+                        titleModal={
+                          <>
+                            <span className="font-bold">Estado:</span>{" "}
+                            <span className="font-light">
+                              {compareDate(
+                                Date.now(),
+                                value.habilitadoHasta
+                              ) === "HABILITADO" ? (
+                                <span className="text-green-600 font-[400]">
+                                  {compareDate(Date.now(), value.habilitadoHasta)}
+                                </span>
+                              ) : (
+                                <span className="text-red-600 font-[400]">
+                                  {compareDate(Date.now(), value.habilitadoHasta)}
+                                </span>
+                              )}
+                            </span>
+                          </>
+                        }
                         onClick={handleVerUsuario}
                       >
                         <div className="sm:flex gap-4 sm:py-0 py-0">
@@ -107,19 +123,20 @@ const ConsultaPublica = () => {
 
                           <div className="sm:text-end text-center">
                             <h3 className="uppercase">
-                              Nombres: {value.primerNombre}{" "}
-                              {value.segundoNombre}
+                              <span className="font-bold">Nombres:</span>{" "}
+                              {value.primerNombre} {value.segundoNombre}
                             </h3>
                             <h3 className="uppercase">
-                              Apellido Paterno: {value.apellidoPaterno}
+                              <span className="font-bold">
+                                Apellido Paterno:
+                              </span>{" "}
+                              {value.apellidoPaterno}
                             </h3>
                             <h3 className="uppercase">
-                              Apellido Materno: {value.apellidoMaterno}
-                            </h3>
-
-                            <h3 className="uppercase my-2">
-                              Estado:{" "}
-                              {compareDate(Date.now(), value.habilitadoHasta)}
+                              <span className="font-bold">
+                                Apellido Materno:
+                              </span>{" "}
+                              {value.apellidoMaterno}
                             </h3>
 
                             <h3>

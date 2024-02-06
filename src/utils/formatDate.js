@@ -7,7 +7,7 @@ function formatDate(date) {
   let minutos = ("0" + fecha.getMinutes()).slice(-2);
   // let segundos = ("0" + fecha.getSeconds()).slice(-2);
   let fechaFormateada =
-    año + "-" + mes + "-" + dia + " " + horas + ":" + minutos;
+    dia + "-" + mes + "-" + año + " " + horas + ":" + minutos;
   return fechaFormateada;
 }
 

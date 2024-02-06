@@ -26,13 +26,8 @@ import AdminRoutes from "./auth/AdminRoutes";
 
 const router = createBrowserRouter([
   {
-    element: <Root />,
-    children: [
-      {
-        path: "/consulta-publica",
-        element: <ConsultaPublica />,
-      },
-    ],
+    path: "/consulta-publica",
+    element: <ConsultaPublica />,
   },
 
   {
@@ -46,7 +41,7 @@ const router = createBrowserRouter([
             element: <LogIn />,
             index: true,
           },
-        ]
+        ],
       },
 
       {

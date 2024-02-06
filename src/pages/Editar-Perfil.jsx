@@ -43,6 +43,7 @@ const EditarPerfil = () => {
       fechaTitulacion: formData.get("fechaTitulacion"),
       estudiosPosgrado: formData.get("estudiosPosgrado"),
       fechaInicio: formData.get("fechaInicio"),
+      maximoGradoAcademico: formData.get("maximoGradoAcademico"),
     };
 
     try {
@@ -131,20 +132,8 @@ const EditarPerfil = () => {
               />
             </div>
 
-            {/* HABILITADO HASTA Y FECHA DE INCORPORACION */}
+            {/* FECHA DE INCORPORACION y HABILITADO HASTA */}
             <div className="md:flex-row flex-col flex gap-7 mb-5">
-              <div className="flex-1">
-                <InputForm
-                  labelText={"Habilitado hasta:"}
-                  inputProps={{
-                    disabled: !userInfo.isAdmin,
-                    defaultValue: location.state?.habilitadoHasta,
-                    type: "date",
-                    name: "habilitadoHasta",
-                  }}
-                />
-              </div>
-
               <div className="flex-1">
                 <InputForm
                   labelText={"Fecha de Incorporación:"}
@@ -153,6 +142,18 @@ const EditarPerfil = () => {
                     type: "date",
                     defaultValue: location.state?.fechaIncorporacion,
                     name: "fechaIncorporacion",
+                  }}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Habilitado hasta:"}
+                  inputProps={{
+                    disabled: !userInfo.isAdmin,
+                    defaultValue: location.state?.habilitadoHasta,
+                    type: "date",
+                    name: "habilitadoHasta",
                   }}
                 />
               </div>
@@ -202,7 +203,7 @@ const EditarPerfil = () => {
                       selectName="visible"
                     />
                   </div>
-                  
+
                   <div className="flex-1">
                     <label
                       htmlFor="observaciones"
@@ -565,10 +566,7 @@ const EditarPerfil = () => {
                   }}
                 />
               </div>
-            </div>
 
-            {/* FECHA TITULACION, MAXIMO GRADO ACADEMICO, ESTUDIOS DE POSGRADO */}
-            <div className="md:flex-row flex-col flex gap-7">
               <div className="flex-1">
                 <InputForm
                   labelText={"Fecha Titulación"}
@@ -580,29 +578,38 @@ const EditarPerfil = () => {
                   }}
                 />
               </div>
+            </div>
 
+            {/* MAXIMO GRADO ACADEMICO, ESTUDIOS DE POSGRADO */}
+            <div className="md:flex-row flex-col flex gap-7">
               <div className="flex-1">
-                <InputForm
-                  labelText={"Máximo Grado Acádemico"}
-                  inputProps={{
-                    type: "text",
-                    placeholder: "Máximo Grado Acádemico",
-                    name: "maximoGradoAcademico",
-                    defaultValue: location.state?.maximoGradoAcademico,
-                  }}
+                <SelectForm
+                  textDefault={"Seleccione Grado"}
+                  labelText={"Máximo Grado Académico"}
+                  options={[
+                    { value: "licenciatura", text: "Licenciatura" },
+                    { value: "maestria", text: "Maestría" },
+                    { value: "doctorado", text: "Doctorado" },
+                  ]}
+                  defaultValue={location.state?.maximoGradoAcademico}
+                  selectName="maximoGradoAcademico"
                 />
               </div>
 
               <div className="flex-1">
-                <InputForm
-                  labelText={"Estudios de Posgrado"}
-                  inputProps={{
-                    type: "text",
-                    placeholder: "Estudios de Posgrado",
-                    name: "estudiosPosgrado",
-                    defaultValue: location.state?.estudiosPosgrado,
-                  }}
-                />
+                <label
+                  htmlFor="estudioPosgrado"
+                  className="text-black font-medium"
+                >
+                  Estudios de Posgrado
+                </label>
+                <textarea
+                  defaultValue={location.state?.estudiosPosgrado}
+                  name="estudiosPosgrado"
+                  placeholder="Estudios de Posgrado"
+                  id="estudioPosgrado"
+                  className="w-full outline-none block border border-gray-700 px-3 mt-1 rounded-sm pt-1 disabled:opacity-90"
+                ></textarea>
               </div>
             </div>
 
