@@ -65,24 +65,7 @@ const ConsultaPublica = () => {
               filtering={filtering}
               columns={[
                 {
-                  header: "Código",
-                  accessorKey: "codigo",
-                },
-
-                {
-                  header: "Nombres y Apellidos",
-                  accessorFn: (row) =>
-                    `${row.primerNombre} ${row.segundoNombre} ${row.apellidoPaterno} ${row.apellidoMaterno}`,
-                },
-
-                {
-                  header: "Estado",
-                  accessorFn: (row) =>
-                    `${compareDate(Date.now(), row.habilitadoHasta)}`,
-                },
-
-                {
-                  header: "Acción",
+                  header: "Ver",
 
                   cell: (info) => {
                     const value = info.cell.row.original;
@@ -101,11 +84,17 @@ const ConsultaPublica = () => {
                                 value.habilitadoHasta
                               ) === "HABILITADO" ? (
                                 <span className="text-green-600 font-[400]">
-                                  {compareDate(Date.now(), value.habilitadoHasta)}
+                                  {compareDate(
+                                    Date.now(),
+                                    value.habilitadoHasta
+                                  )}
                                 </span>
                               ) : (
                                 <span className="text-red-600 font-[400]">
-                                  {compareDate(Date.now(), value.habilitadoHasta)}
+                                  {compareDate(
+                                    Date.now(),
+                                    value.habilitadoHasta
+                                  )}
                                 </span>
                               )}
                             </span>
@@ -124,19 +113,25 @@ const ConsultaPublica = () => {
                           <div className="sm:text-start text-center">
                             <h3 className="uppercase">
                               <span className="font-bold">Nombres:</span>{" "}
-                              <span className="block">{value.primerNombre} {value.segundoNombre}</span>
+                              <span className="block">
+                                {value.primerNombre} {value.segundoNombre}
+                              </span>
                             </h3>
                             <h3 className="uppercase">
                               <span className="font-bold">
                                 Apellido Paterno:
                               </span>{" "}
-                              <span className="block">{value.apellidoPaterno}</span>
+                              <span className="block">
+                                {value.apellidoPaterno}
+                              </span>
                             </h3>
                             <h3 className="uppercase">
                               <span className="font-bold">
                                 Apellido Materno:
                               </span>{" "}
-                              <span className="block">{value.apellidoMaterno}</span>
+                              <span className="block">
+                                {value.apellidoMaterno}
+                              </span>
                             </h3>
 
                             <h3>
@@ -150,6 +145,22 @@ const ConsultaPublica = () => {
                       </ModalComponent>
                     );
                   },
+                },
+                {
+                  header: "Código",
+                  accessorKey: "codigo",
+                },
+
+                {
+                  header: "Nombres y Apellidos",
+                  accessorFn: (row) =>
+                    `${row.primerNombre} ${row.segundoNombre} ${row.apellidoPaterno} ${row.apellidoMaterno}`,
+                },
+
+                {
+                  header: "Estado",
+                  accessorFn: (row) =>
+                    `${compareDate(Date.now(), row.habilitadoHasta)}`,
                 },
               ]}
             />
