@@ -35,7 +35,14 @@ const EditarPerfil = () => {
       giroRubroCentroLaboral: formData.get("giroRubroCentroLaboral"),
       hijosMenoresMasculino: formData.get("hijosMenoresMasculino"),
       hijosMenoresFemenino: formData.get("hijosMenoresFemenino"),
+
       deportePractica: formData.get("deportePractica"),
+      pasaTiempos: formData.get("pasaTiempos"),
+      universidad: formData.get("universidad"),
+      tituloUniversitario: formData.get("tituloUniversitario"),
+      fechaTitulacion: formData.get("fechaTitulacion"),
+      estudiosPosgrado: formData.get("estudiosPosgrado"),
+      fechaInicio: formData.get("fechaInicio"),
     };
 
     try {
@@ -52,6 +59,13 @@ const EditarPerfil = () => {
         userData.sexo = formData.get("sexo");
         userData.perfilImagen = formData.get("perfilImagen");
         userData.fechaNacimiento = formData.get("fechaNacimiento");
+
+        userData.fechaIncorporacion = formData.get("fechaIncorporacion");
+        userData.habilitadoHasta = formData.get("habilitadoHasta");
+        userData.visible = formData.get("visible");
+        userData.condicion = formData.get("condicion");
+        userData.tomoFolio = formData.get("tomoFolio");
+        userData.observaciones = formData.get("observaciones");
 
         console.log(userData);
         await axios.put(
@@ -87,16 +101,130 @@ const EditarPerfil = () => {
           {"< Volver Atrás"}
         </h3>
 
-        <form className="md:flex gap-8" onSubmit={handleEditarPerfil}>
+        <form
+          className="md:flex items-start gap-8"
+          onSubmit={handleEditarPerfil}
+        >
           <div>
             <img
               src={location.state?.perfilImagen}
-              className="max-w-[15rem] rounded object-cover"
+              className="max-w-[15rem] md:mx-0 mx-auto rounded object-cover"
             />
           </div>
 
           <div>
-            <div className="flex-1 mb-3">
+            <h2 className="text-[1.7rem] mb-2 text-center">
+              Información General
+            </h2>
+
+            {/* CODIGO DE COLEGIATURA */}
+            <div className="flex-1 mb-5">
+              <InputForm
+                labelText={"Código de Colegiatura"}
+                inputProps={{
+                  disabled: !userInfo.isAdmin,
+                  defaultValue: location.state?.codigo,
+                  type: "number",
+                  placeholder: "123456",
+                  name: "codigo",
+                }}
+              />
+            </div>
+
+            {/* HABILITADO HASTA Y FECHA DE INCORPORACION */}
+            <div className="md:flex-row flex-col flex gap-7 mb-5">
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Habilitado hasta:"}
+                  inputProps={{
+                    disabled: !userInfo.isAdmin,
+                    defaultValue: location.state?.habilitadoHasta,
+                    type: "date",
+                    name: "habilitadoHasta",
+                  }}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Fecha de Incorporación:"}
+                  inputProps={{
+                    disabled: !userInfo.isAdmin,
+                    type: "date",
+                    defaultValue: location.state?.fechaIncorporacion,
+                    name: "fechaIncorporacion",
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Tomo y Folio, Condicion */}
+            <div className="md:flex-row flex-col flex gap-7 mb-5">
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Tomo y Folio:"}
+                  inputProps={{
+                    disabled: !userInfo.isAdmin,
+                    defaultValue: location.state?.tomoFolio,
+                    type: "text",
+                    name: "tomoFolio",
+                  }}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Condición:"}
+                  inputProps={{
+                    disabled: !userInfo.isAdmin,
+                    type: "text",
+                    defaultValue: location.state?.condicion,
+                    name: "condicion",
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Visible y Observaciones */}
+            <div className="md:flex-row flex-col flex gap-7">
+              {!userInfo.isAdmin ? null : (
+                <>
+                  <div className="flex-1">
+                    <SelectForm
+                      textDefault={"Seleccione Estado"}
+                      labelText={"Visible"}
+                      options={[
+                        { value: "Sí", text: "Sí" },
+                        { value: "No", text: "No" },
+                      ]}
+                      defaultValue={location.state?.visible}
+                      disabled={!userInfo.isAdmin}
+                      selectName="visible"
+                    />
+                  </div>
+                  
+                  <div className="flex-1">
+                    <label
+                      htmlFor="observaciones"
+                      className="text-black font-medium"
+                    >
+                      Observaciones
+                    </label>
+                    <textarea
+                      defaultValue={location.state?.observaciones}
+                      name="observaciones"
+                      id="observaciones"
+                      className="w-full outline-none block border border-gray-700 px-3 mt-1 rounded-sm pt-1 disabled:opacity-90"
+                    ></textarea>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <h2 className="text-[1.7rem] mt-5 text-center">Datos Personales</h2>
+
+            {/* FOTO || IMAGEN */}
+            <div className="flex-1 mb-5">
               {!userInfo.isAdmin ? null : (
                 <InputForm
                   labelText={"Imagen"}
@@ -111,7 +239,8 @@ const EditarPerfil = () => {
               )}
             </div>
 
-            <div className="md:flex gap-7">
+            {/* DOCUMENTO ID Y NUMERO DE DOCUMENTO */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
               <div className="flex-1">
                 <SelectForm
                   textDefault={"Seleccione Documento de ID"}
@@ -141,36 +270,8 @@ const EditarPerfil = () => {
               </div>
             </div>
 
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
-              <div className="flex-1">
-                <InputForm
-                  labelText={"Código"}
-                  inputProps={{
-                    disabled: !userInfo.isAdmin,
-                    defaultValue: location.state?.codigo,
-                    type: "number",
-                    placeholder: "123456",
-                    name: "codigo",
-                  }}
-                />
-              </div>
-
-              <div className="flex-1">
-                <InputForm
-                  labelText={"Email"}
-                  inputProps={{
-                    disabled: !userInfo.isAdmin,
-                    type: "email",
-                    defaultValue: location.state?.email,
-                    placeholder: "Correo Electrónico",
-                    name: "email",
-                    required: userInfo.isAdmin,
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
+            {/* PRIMER NOMBRE Y SEGUNDO NOMBRE */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Primer Nombre"}
@@ -199,7 +300,8 @@ const EditarPerfil = () => {
               </div>
             </div>
 
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
+            {/* APELLIDO PATERNO Y APELLIDO MATERNO */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Apellido Paterno"}
@@ -227,7 +329,8 @@ const EditarPerfil = () => {
               </div>
             </div>
 
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
+            {/* SEXO Y FECHA DE NACIMIENTO */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
               <div className="flex-1">
                 <SelectForm
                   textDefault={"Seleccione Sexo"}
@@ -256,7 +359,8 @@ const EditarPerfil = () => {
               </div>
             </div>
 
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
+            {/* DIRECCION Y URBANIZACION */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Dirección"}
@@ -282,8 +386,9 @@ const EditarPerfil = () => {
               </div>
             </div>
 
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
-              <div className="basis-[33.3%]">
+            {/* DISTRITO, PROVINCIA, DEPARTAMENTO, PAIS */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
+              <div className="flex-1">
                 <InputForm
                   labelText={"Distrito"}
                   inputProps={{
@@ -295,7 +400,7 @@ const EditarPerfil = () => {
                 />
               </div>
 
-              <div className="basis-[33.3%]">
+              <div className="flex-1">
                 <InputForm
                   labelText={"Provincia"}
                   inputProps={{
@@ -307,7 +412,7 @@ const EditarPerfil = () => {
                 />
               </div>
 
-              <div className="basis-[33.3%]">
+              <div className="flex-1">
                 <InputForm
                   labelText={"Departamento"}
                   inputProps={{
@@ -318,9 +423,23 @@ const EditarPerfil = () => {
                   }}
                 />
               </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"País"}
+                  inputProps={{
+                    disabled: !userInfo.isAdmin,
+                    type: "text",
+                    defaultValue: location.state?.pais,
+                    placeholder: "País",
+                    name: "pais",
+                  }}
+                />
+              </div>
             </div>
 
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
+            {/* TELEFONO 1 Y TELEFONO 2 */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Teléfono 1 (WhatsApp)"}
@@ -346,78 +465,25 @@ const EditarPerfil = () => {
               </div>
             </div>
 
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
-              <div className="flex-1">
-                <SelectForm
-                  textDefault={"Selecciona Estado Laboral"}
-                  labelText={"Sector Laboral"}
-                  selectName="sectorLaboral"
-                  onChange={(e) => setSectorLaboral(e.target.value)}
-                  options={[
-                    { value: "ninguno", text: "Ninguno" },
-                    { value: "publico", text: "Público" },
-                    { value: "privado", text: "Privado" },
-                  ]}
-                  defaultValue={location.state?.sectorLaboral}
-                />
-              </div>
-
+            {/* EMAIL */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
-                  labelText={"Centro Laboral"}
+                  labelText={"Email"}
                   inputProps={{
-                    required: sectorLaboral !== "ninguno",
-                    disabled: sectorLaboral === "ninguno",
-                    type: "text",
-                    placeholder: "Centro Laboral",
-                    name: "centroLaboral",
-                    defaultValue: location.state?.centroLaboral,
-                  }}
-                />
-              </div>
-
-              <div className="flex-1">
-                <InputForm
-                  labelText={"Cargo"}
-                  inputProps={{
-                    required: sectorLaboral !== "ninguno",
-                    disabled: sectorLaboral === "ninguno",
-                    type: "text",
-                    placeholder: "Cargo",
-                    name: "cargo",
-                    defaultValue: location.state?.cargo,
+                    disabled: !userInfo.isAdmin,
+                    type: "email",
+                    defaultValue: location.state?.email,
+                    placeholder: "Correo Electrónico",
+                    name: "email",
+                    required: userInfo.isAdmin,
                   }}
                 />
               </div>
             </div>
 
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
-              <div className="flex-1">
-                <InputForm
-                  labelText={"Giro o rubro del centro laboral"}
-                  inputProps={{
-                    type: "text",
-                    placeholder: "Giro o rubro del centro laboral",
-                    name: "giroRubroCentroLaboral",
-                    defaultValue: location.state?.giroRubroCentroLaboral,
-                  }}
-                />
-              </div>
-
-              <div className="flex-1">
-                <InputForm
-                  labelText={"Deportes que practica"}
-                  inputProps={{
-                    type: "text",
-                    placeholder: "Deportes que practica",
-                    name: "deportePractica",
-                    defaultValue: location.state?.deportePractica,
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="md:flex-row flex-col flex gap-7 mt-4">
+            {/* HIJOS O HIJAS MENORES DE EDAD */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Hijos menores de edad hombre(s)"}
@@ -438,6 +504,175 @@ const EditarPerfil = () => {
                     placeholder: "Hijos menores de edad mujer(es)",
                     name: "hijosMenoresFemenino",
                     defaultValue: location.state?.hijosMenoresFemenino,
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* DEPORTES Y PASATIEMPOS */}
+            <div className="md:flex-row flex-col flex gap-7">
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Deportes"}
+                  inputProps={{
+                    type: "text",
+                    placeholder: "Deportes",
+                    name: "deportePractica",
+                    defaultValue: location.state?.deportePractica,
+                  }}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Pasatiempos"}
+                  inputProps={{
+                    type: "text",
+                    placeholder: "Pasatiempos",
+                    name: "pasaTiempos",
+                    defaultValue: location.state?.pasaTiempos,
+                  }}
+                />
+              </div>
+            </div>
+
+            <h2 className="text-[1.7rem] my-8 text-center">
+              Información Acádemica
+            </h2>
+
+            {/* UNIVERSIDAD Y TITULO UNIVERSITARIO */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Universidad"}
+                  inputProps={{
+                    type: "text",
+                    placeholder: "Universidad",
+                    name: "universidad",
+                    defaultValue: location.state?.universidad,
+                  }}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Título Universitario"}
+                  inputProps={{
+                    type: "text",
+                    placeholder: "Título Universitario",
+                    name: "tituloUniversitario",
+                    defaultValue: location.state?.tituloUniversitario,
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* FECHA TITULACION, MAXIMO GRADO ACADEMICO, ESTUDIOS DE POSGRADO */}
+            <div className="md:flex-row flex-col flex gap-7">
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Fecha Titulación"}
+                  inputProps={{
+                    type: "date",
+                    placeholder: "Fecha Titulación",
+                    name: "fechaTitulacion",
+                    defaultValue: location.state?.fechaTitulacion,
+                  }}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Máximo Grado Acádemico"}
+                  inputProps={{
+                    type: "text",
+                    placeholder: "Máximo Grado Acádemico",
+                    name: "maximoGradoAcademico",
+                    defaultValue: location.state?.maximoGradoAcademico,
+                  }}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Estudios de Posgrado"}
+                  inputProps={{
+                    type: "text",
+                    placeholder: "Estudios de Posgrado",
+                    name: "estudiosPosgrado",
+                    defaultValue: location.state?.estudiosPosgrado,
+                  }}
+                />
+              </div>
+            </div>
+
+            <h2 className="text-[1.7rem] my-8 text-center">
+              Principal Información Laboral
+            </h2>
+
+            {/* SECTOR, CARGO, CENTRO LABORAL */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
+              <div className="flex-1">
+                <SelectForm
+                  textDefault={"Selecciona Estado Laboral"}
+                  labelText={"Sector"}
+                  selectName="sectorLaboral"
+                  onChange={(e) => setSectorLaboral(e.target.value)}
+                  options={[
+                    { value: "ninguno", text: "Ninguno" },
+                    { value: "publico", text: "Público" },
+                    { value: "privado", text: "Privado" },
+                  ]}
+                  defaultValue={location.state?.sectorLaboral}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Cargo"}
+                  inputProps={{
+                    type: "text",
+                    placeholder: "Cargo",
+                    name: "cargo",
+                    defaultValue: location.state?.cargo,
+                  }}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Centro Laboral"}
+                  inputProps={{
+                    type: "text",
+                    placeholder: "Centro Laboral",
+                    name: "centroLaboral",
+                    defaultValue: location.state?.centroLaboral,
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* GIRO O RUBRO */}
+            <div className="md:flex-row flex-col flex gap-7 mb-4">
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Giro o Rubro"}
+                  inputProps={{
+                    type: "text",
+                    placeholder: "Giro o Rubro",
+                    name: "giroRubroCentroLaboral",
+                    defaultValue: location.state?.giroRubroCentroLaboral,
+                  }}
+                />
+              </div>
+
+              <div className="flex-1">
+                <InputForm
+                  labelText={"Fecha de Inicio"}
+                  inputProps={{
+                    type: "date",
+                    name: "fechaInicio",
+                    defaultValue: location.state?.fechaInicio,
                   }}
                 />
               </div>

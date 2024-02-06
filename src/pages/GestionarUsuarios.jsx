@@ -93,18 +93,17 @@ const GestionarUsuarios = () => {
 
               <div className="flex md:flex-row flex-col gap-7">
                 <div className="flex-1">
-                <SelectForm
-                      textDefault={"Seleccione Documento de ID"}
-                      labelText={"Documento de Identidad"}
-                      options={[
-                        { value: "dni", text: "DNI" },
-                        { value: "cd", text: "CE" },
-                        { value: "otro", text: "OTRO" },
-                      ]}
-                      required={true}
-                      selectName="documentoIdentidad"
-                    />
-
+                  <SelectForm
+                    textDefault={"Seleccione Documento de ID"}
+                    labelText={"Documento de Identidad"}
+                    options={[
+                      { value: "dni", text: "DNI" },
+                      { value: "cd", text: "CE" },
+                      { value: "otro", text: "OTRO" },
+                    ]}
+                    required={true}
+                    selectName="documentoIdentidad"
+                  />
                 </div>
 
                 <div className="flex-1">
@@ -238,45 +237,57 @@ const GestionarUsuarios = () => {
 
         {users.length > 0 && (
           <div className="w-full overflow-auto">
-            <div className="" style={{
-              minWidth: "600px"
-            }}>
+            <div
+              className=""
+              style={{
+                minWidth: "600px",
+              }}
+            >
               <Table
-            data={users}
-            setFiltering={setFiltering}
-            filtering={filtering}
-            columns={[
-              { header: "Nombre", accessorKey: "primerNombre" },
-              { header: "Segundo Nombre", accessorKey: "segundoNombre" },
-              { header: "Apellido Paterno", accessorKey: "apellidoPaterno" },
-              { header: "Apellido Materno", accessorKey: "apellidoMaterno" },
-              {
-                header: "Código",
-                accessorKey: "codigo",
-              },
-              { header: "Email", accessorKey: "email" },
-              { header: "Número del Documento", accessorKey: "numeroDocIdentidad" },
-              // numeroDocIdentidad
+                data={users}
+                setFiltering={setFiltering}
+                filtering={filtering}
+                columns={[
+                  { header: "Nombre", accessorKey: "primerNombre" },
+                  { header: "Segundo Nombre", accessorKey: "segundoNombre" },
+                  {
+                    header: "Apellido Paterno",
+                    accessorKey: "apellidoPaterno",
+                  },
+                  {
+                    header: "Apellido Materno",
+                    accessorKey: "apellidoMaterno",
+                  },
+                  {
+                    header: "Código",
+                    accessorKey: "codigo",
+                  },
+                  { header: "Email", accessorKey: "email" },
+                  {
+                    header: "Número del Documento",
+                    accessorKey: "numeroDocIdentidad",
+                  },
+                  // numeroDocIdentidad
 
-              {
-                header: "Acción",
+                  {
+                    header: "Acción",
 
-                cell: (info) => {
-                  const value = info.cell.row.original;
-                  console.log(value);
+                    cell: (info) => {
+                      const value = info.cell.row.original;
+                      console.log(value);
 
-                  return (
-                    <Link
-                      to={`/perfil/${value._id}`}
-                      className="bg-blue-600 text-white px-2 py-1 rounded font-bold text-nowrap"
-                    >
-                      Ver Usuario
-                    </Link>
-                  );
-                },
-              },
-            ]}
-          />
+                      return (
+                        <Link
+                          to={`/perfil/${value._id}`}
+                          className="bg-blue-600 text-white px-2 py-1 rounded font-bold text-nowrap"
+                        >
+                          Ver Usuario
+                        </Link>
+                      );
+                    },
+                  },
+                ]}
+              />
             </div>
           </div>
         )}

@@ -20,90 +20,98 @@ const Root = () => {
   return (
     <div className="flex flex-col h-[100vh]">
       {/* Navbar / Menu */}
-      <nav className="bg-[#3a7fc2] text-white">
+      <nav className="bg-[#3a7fc2] text-white sm:py-0 py-3">
         <div className="container mx-auto">
-          <div className="flex justify-between items-center">
+          <div className="sm:flex justify-between items-center">
             {/* Logo */}
             <Link to={"/perfil"}>
-              <h2 className="italic uppercase text-lg tracking-widest">
+              <h2 className="sm:text-start text-center italic uppercase text-lg tracking-widest">
                 Actualización de Información
               </h2>
             </Link>
 
             {/* Dropdown */}
-            <div className="relative">
-              <button
-                id="dropdownInformationButton"
-                data-dropdown-toggle="dropdownInformation"
-                className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-transparent items-center"
-                type="button"
-                onClick={() => setShowDropDown(!showDropDown)}
-              >
-                <img
-                  className="w-[3rem] h-[3rem] rounded-full object-cover"
-                  src={userInfo?.perfilImagen || UserAvatar}
-                />
-              </button>
+            <div className="flex justify-center items-center">
+              <Link className="font-[500]" to={`/consulta-publica`}>
+                Consulta
+              </Link>
 
-              {showDropDown && (
-                <>
-                  {createPortal(
+              <div className="relative">
+                <button
+                  id="dropdownInformationButton"
+                  data-dropdown-toggle="dropdownInformation"
+                  className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-transparent items-center"
+                  type="button"
+                  onClick={() => setShowDropDown(!showDropDown)}
+                >
+                  <img
+                    className="w-[3rem] h-[3rem] rounded-full object-cover"
+                    src={userInfo?.perfilImagen || UserAvatar}
+                  />
+                </button>
+
+                {showDropDown && (
+                  <>
+                    {createPortal(
+                      <div
+                        onClick={() => setShowDropDown(!showDropDown)}
+                        className="h-[100vh] fixed top-0 w-full"
+                      ></div>,
+                      document.body
+                    )}
                     <div
-                      onClick={() => setShowDropDown(!showDropDown)}
-                      className="h-[100vh] fixed top-0 w-full"
-                    ></div>,
-                    document.body
-                  )}
-                  <div
-                    onClick={() => setShowDropDown(false)}
-                    id="dropdownInformation"
-                    className="z-10 absolute top-[100%] right-5 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-                  >
-                    <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                      <div className="capitalize">{userInfo?.primerNombre}</div>
-                      <div className="font-medium truncate">
-                        {userInfo?.email}
+                      onClick={() => setShowDropDown(false)}
+                      id="dropdownInformation"
+                      className="z-10 absolute top-[100%] right-5 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                    >
+                      <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                        <div className="capitalize">
+                          {userInfo?.primerNombre}
+                        </div>
+                        <div className="font-medium truncate">
+                          {userInfo?.email}
+                        </div>
+                      </div>
+
+                      <ul
+                        className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdownInformationButton"
+                      >
+                        <li>
+                          <Link
+                            to={"/perfil"}
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >
+                            Perfil
+                          </Link>
+                        </li>
+
+                        {userInfo.isAdmin && (
+                          <>
+                            <li>
+                              <Link
+                                to={"/gestionar-usuarios"}
+                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Gestionar Usuarios
+                              </Link>
+                            </li>
+                          </>
+                        )}
+                      </ul>
+
+                      <div className="py-2">
+                        <Link
+                          onClick={handleLogOut}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        >
+                          Cerrar Sesión
+                        </Link>
                       </div>
                     </div>
-
-                    <ul
-                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownInformationButton"
-                    >
-                      <li>
-                        <Link
-                          to={"/perfil"}
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Perfil
-                        </Link>
-                      </li>
-
-                      {userInfo.isAdmin && (
-                        <>
-                          <li>
-                            <Link
-                              to={"/gestionar-usuarios"}
-                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              Gestionar Usuarios
-                            </Link>
-                          </li>
-                        </>
-                      )}
-                    </ul>
-
-                    <div className="py-2">
-                      <Link
-                        onClick={handleLogOut}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                      >
-                        Cerrar Sesión
-                      </Link>
-                    </div>
-                  </div>
-                </>
-              )}
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>

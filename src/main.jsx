@@ -17,6 +17,7 @@ import NewPassword from "./pages/NewPassword";
 import GestionarUsuarios from "./pages/GestionarUsuarios";
 import EditarPerfil from "./pages/Editar-Perfil";
 import Perfil from "./pages/Perfil";
+import ConsultaPublica from "./pages/ConsultaPublica";
 
 // Rutas privadas y publicas
 import PublicRoutes from "./auth/PublicRoutes";
@@ -24,6 +25,16 @@ import PrivateRoutes from "./auth/PrivateRoutes";
 import AdminRoutes from "./auth/AdminRoutes";
 
 const router = createBrowserRouter([
+  {
+    element: <Root />,
+    children: [
+      {
+        path: "/consulta-publica",
+        element: <ConsultaPublica />,
+      },
+    ],
+  },
+
   {
     element: <PublicRoutes />,
     children: [
@@ -78,7 +89,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AppProvider>
-    <ToastContainer />
+    <ToastContainer position="top-center" stacked />
     <RouterProvider router={router} />
   </AppProvider>
 );
