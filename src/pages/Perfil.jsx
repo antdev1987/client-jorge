@@ -68,7 +68,7 @@ const Perfil = () => {
         </h2>
       )}
 
-      <div className="lg:flex items-start gap-10 px-4">
+      <div className="lg:flex items-start md:gap-10 gap-[0.8rem] px-4">
         <div className="border-gray-300 border p-7 shadow-lg shadow-black/35  rounded">
           <div className="text-xl text-center">
             <div>
@@ -119,7 +119,7 @@ const Perfil = () => {
             </h2>
 
             {/* Codigo y habilitado hasta */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Código de Colegiatura:{" "}
@@ -142,7 +142,7 @@ const Perfil = () => {
             </div>
 
             {/* Fecha de incorporacion y tomo && folio */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Fecha de Incorporación:{" "}
@@ -165,7 +165,7 @@ const Perfil = () => {
             </div>
 
             {/* Condicion y visible */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Condición:{" "}
@@ -186,7 +186,7 @@ const Perfil = () => {
             </div>
 
             {/* Observaciones */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-6">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-6">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Observaciones:{" "}
@@ -202,7 +202,7 @@ const Perfil = () => {
             </h2>
 
             {/* Numero de documento y documento de identidad */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Número de Documento de Identidad:{" "}
@@ -223,7 +223,7 @@ const Perfil = () => {
             </div>
 
             {/* Apellido materno y apellido paterno */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Apellido Paterno:{" "}
@@ -244,12 +244,12 @@ const Perfil = () => {
             </div>
 
             {/* Sexo y Fecha de nacimiento */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Sexo:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.sexo || "No hay dato"}
                   </span>
                 </h4>
@@ -268,11 +268,11 @@ const Perfil = () => {
             </div>
 
             {/* Direccion y urbanizacion */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Dirección:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.direccion || "No hay dato"}
                   </span>
                 </h4>
@@ -289,11 +289,11 @@ const Perfil = () => {
             </div>
 
             {/* Distrito y provincia */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Distrito:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.distrito || "No hay dato"}
                   </span>
                 </h4>
@@ -310,11 +310,11 @@ const Perfil = () => {
             </div>
 
             {/* Departamento y pais */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Departamento:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.departamento || "No hay dato"}
                   </span>
                 </h4>
@@ -323,7 +323,7 @@ const Perfil = () => {
               <div className="flex-1">
                 <h4 className="font-[500]">
                   País:{" "}
-                  <span className="md:block font-normal text-gray-700 text-[1.2rem]">
+                  <span className="block font-normal text-gray-700 text-[1.2rem]">
                     {userPerfilInfo?.pais || "No hay dato"}
                   </span>
                 </h4>
@@ -331,7 +331,7 @@ const Perfil = () => {
             </div>
 
             {/* Telefono 1 y telefono 2 */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Teléfono 1:{" "}
@@ -352,7 +352,7 @@ const Perfil = () => {
             </div>
 
             {/* Hijos menores de edad hombre y mujer */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Hijos Menores Hombre(s):{" "}
@@ -373,7 +373,7 @@ const Perfil = () => {
             </div>
 
             {/* Deportes y pasatiempos */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-6">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-6">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Deportes:{" "}
@@ -398,7 +398,7 @@ const Perfil = () => {
             </h2>
 
             {/* Universidad y titulo universitario */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Universidad:{" "}
@@ -419,7 +419,7 @@ const Perfil = () => {
             </div>
 
             {/* Fecha titulacion y maximo grado academico */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Fecha de Titulación:{" "}
@@ -442,7 +442,7 @@ const Perfil = () => {
             </div>
 
             {/* Estudios de posgrado */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-6">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-6">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Estudios de Posgrado:{" "}
@@ -458,7 +458,7 @@ const Perfil = () => {
             </h2>
 
             {/* Sector laboral y cargo */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Sector:{" "}
@@ -479,7 +479,7 @@ const Perfil = () => {
             </div>
 
             {/* Centro laboral y giro o rubro */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col mb-4">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col mb-4">
               <div className="flex-1">
                 <h4 className="font-[500]">
                   Centro Laboral:{" "}
@@ -500,7 +500,7 @@ const Perfil = () => {
             </div>
 
             {/* Fecha de inicio */}
-            <div className="flex justify-between gap-10 md:flex-row flex-col">
+            <div className="flex justify-between md:gap-10 gap-[0.8rem] md:flex-row flex-col">
               <div className="flex-1">
                 <h4 className="font-[500] mb-4">
                   Fecha de Inicio:{" "}
