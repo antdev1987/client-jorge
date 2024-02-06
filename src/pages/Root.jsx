@@ -23,10 +23,10 @@ const Root = () => {
       {/* Navbar / Menu */}
       <nav className="bg-[#3a7fc2] text-white sm:py-2 py-3">
         <div className="container mx-auto">
-          <div className="sm:flex justify-between items-center">
+          <div className="flex justify-between items-center md:px-0 px-4">
             {/* Logo */}
             <Link to={"/"}>
-              <h2 className="sm:text-start text-center italic uppercase text-lg tracking-widest">
+              <h2 className="roboto-bold sm:text-start text-center italic uppercase text-lg tracking-widest">
                 {/* Actualización de Información */}
                 COLEGIADOS
               </h2>
