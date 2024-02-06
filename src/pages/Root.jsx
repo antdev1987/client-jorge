@@ -24,7 +24,7 @@ const Root = () => {
         <div className="container mx-auto">
           <div className="sm:flex justify-between items-center">
             {/* Logo */}
-            <Link to={"/perfil"}>
+            <Link to={"/"}>
               <h2 className="sm:text-start text-center italic uppercase text-lg tracking-widest">
                 Actualización de Información
               </h2>

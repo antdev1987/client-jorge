@@ -537,7 +537,7 @@ const EditarPerfil = () => {
             </div>
 
             <h2 className="text-[1.7rem] my-8 text-center">
-              Información Acádemica
+              Información Académica
             </h2>
 
             {/* UNIVERSIDAD Y TITULO UNIVERSITARIO */}
