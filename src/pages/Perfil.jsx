@@ -59,12 +59,14 @@ const Perfil = () => {
 
   return (
     <section className="container max-w-[1200px] mx-auto my-10">
-      <h2
-        className="px-4 pb-3 font-bold cursor-pointer"
-        onClick={() => navigate(-1)}
-      >
-        {"< Volver Atrás"}
-      </h2>
+      {params?.perfilId && userInfo.isAdmin && (
+        <h2
+          className="px-4 pb-3 font-bold cursor-pointer"
+          onClick={() => navigate(-1)}
+        >
+          {"< Volver Atrás"}
+        </h2>
+      )}
 
       <div className="lg:flex items-start gap-10 px-4">
         <div className="border-gray-300 border p-7 shadow-lg shadow-black/35  rounded">
@@ -99,12 +101,14 @@ const Perfil = () => {
               Editar Perfil
             </button>
 
-            <button
-              onClick={handleEliminarUsuario}
-              className="bg-red-600 text-[1.1rem] text-white px-2 py-1 rounded font-bold block"
-            >
-              Eliminar
-            </button>
+            {params?.perfilId && userInfo.isAdmin && (
+              <button
+                onClick={handleEliminarUsuario}
+                className="bg-red-600 text-[1.1rem] text-white px-2 py-1 rounded font-bold block"
+              >
+                Eliminar
+              </button>
+            )}
           </div>
         </div>
 
@@ -129,8 +133,9 @@ const Perfil = () => {
                 <h4 className="font-[500]">
                   Habilitado hasta:{" "}
                   <span className="font-normal block text-gray-700 text-[1.2rem]">
-                    {formatDateSinHora(userPerfilInfo?.habilitadoHasta) ||
-                      "No hay dato"}
+                    {userPerfilInfo?.habilitadoHasta
+                      ? formatDateSinHora(userPerfilInfo?.habilitadoHasta)
+                      : "No hay dato"}
                   </span>
                 </h4>
               </div>
@@ -142,8 +147,9 @@ const Perfil = () => {
                 <h4 className="font-[500]">
                   Fecha de Incorporación:{" "}
                   <span className="block font-normal text-gray-700 text-[1.2rem]">
-                    {formatDateSinHora(userPerfilInfo?.fechaIncorporacion) ||
-                      "No hay dato"}
+                    {userPerfilInfo?.fechaIncorporacion
+                      ? formatDateSinHora(userPerfilInfo?.fechaIncorporacion)
+                      : "No hay dato"}
                   </span>
                 </h4>
               </div>
@@ -252,8 +258,9 @@ const Perfil = () => {
                 <h4 className="font-[500]">
                   Fecha de Nacimiento:{" "}
                   <span className="block font-normal text-gray-700 text-[1.2rem]">
-                    {formatDateSinHora(userPerfilInfo?.fechaNacimiento) ||
-                      "No hay dato"}
+                    {userPerfilInfo?.fechaNacimiento
+                      ? formatDateSinHora(userPerfilInfo?.fechaNacimiento)
+                      : "No hay dato"}
                   </span>
                 </h4>
               </div>
@@ -416,8 +423,9 @@ const Perfil = () => {
                 <h4 className="font-[500]">
                   Fecha de Titulación:{" "}
                   <span className="block font-normal text-gray-700 text-[1.2rem]">
-                    {formatDateSinHora(userPerfilInfo?.fechaTitulacion) ||
-                      "No hay dato"}
+                    {userPerfilInfo?.fechaTitulacion
+                      ? formatDateSinHora(userPerfilInfo?.fechaTitulacion)
+                      : "No hay dato"}
                   </span>
                 </h4>
               </div>
@@ -496,7 +504,9 @@ const Perfil = () => {
                 <h4 className="font-[500] mb-4">
                   Fecha de Inicio:{" "}
                   <span className="block font-normal text-gray-700 text-[1.2rem]">
-                    {formatDateSinHora(userPerfilInfo?.fechaInicio) || "No hay dato"}
+                    {userPerfilInfo?.fechaInicio
+                      ? formatDateSinHora(userPerfilInfo?.fechaInicio)
+                      : "No hay dato"}
                   </span>
                 </h4>
               </div>

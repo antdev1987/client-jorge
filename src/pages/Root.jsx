@@ -1,6 +1,7 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import UserAvatar from "../images/user-avatar.png";
 import AppContext from "../context/AppProvider";
+import { HiDotsVertical } from "react-icons/hi";
 import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { toast } from "react-toastify";
@@ -26,16 +27,13 @@ const Root = () => {
             {/* Logo */}
             <Link to={"/"}>
               <h2 className="sm:text-start text-center italic uppercase text-lg tracking-widest">
-                Actualización de Información
+                {/* Actualización de Información */}
+                COLEGIADOS
               </h2>
             </Link>
 
             {/* Dropdown */}
             <div className="flex justify-center items-center">
-              <Link className="font-[500]" to={`/consulta-publica`}>
-                Consulta
-              </Link>
-
               {userInfo.token && (
                 <>
                   <div className="relative">
@@ -46,10 +44,11 @@ const Root = () => {
                       type="button"
                       onClick={() => setShowDropDown(!showDropDown)}
                     >
-                      <img
+                      {/* <img
                         className="w-[3rem] h-[3rem] rounded-full object-cover"
                         src={userInfo?.perfilImagen || UserAvatar}
-                      />
+                      /> */}
+                      <HiDotsVertical className="text-[1.6rem]" />
                     </button>
 
                     {showDropDown && (
@@ -85,6 +84,15 @@ const Root = () => {
                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                               >
                                 Perfil
+                              </Link>
+                            </li>
+
+                            <li>
+                              <Link
+                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                to={`/consulta-publica`}
+                              >
+                                Consulta
                               </Link>
                             </li>
 

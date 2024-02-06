@@ -121,22 +121,22 @@ const ConsultaPublica = () => {
                             />
                           </div>
 
-                          <div className="sm:text-end text-center">
+                          <div className="sm:text-start text-center">
                             <h3 className="uppercase">
                               <span className="font-bold">Nombres:</span>{" "}
-                              {value.primerNombre} {value.segundoNombre}
+                              <span className="block">{value.primerNombre} {value.segundoNombre}</span>
                             </h3>
                             <h3 className="uppercase">
                               <span className="font-bold">
                                 Apellido Paterno:
                               </span>{" "}
-                              {value.apellidoPaterno}
+                              <span className="block">{value.apellidoPaterno}</span>
                             </h3>
                             <h3 className="uppercase">
                               <span className="font-bold">
                                 Apellido Materno:
                               </span>{" "}
-                              {value.apellidoMaterno}
+                              <span className="block">{value.apellidoMaterno}</span>
                             </h3>
 
                             <h3>
