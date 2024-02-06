@@ -133,7 +133,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* FECHA DE INCORPORACION y HABILITADO HASTA */}
-            <div className="md:flex-row flex-col flex gap-7 mb-5">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-5">
               <div className="flex-1">
                 <InputForm
                   labelText={"Fecha de Incorporación:"}
@@ -160,7 +160,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* Tomo y Folio, Condicion */}
-            <div className="md:flex-row flex-col flex gap-7 mb-5">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-5">
               <div className="flex-1">
                 <InputForm
                   labelText={"Tomo y Folio:"}
@@ -187,7 +187,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* Visible y Observaciones */}
-            <div className="md:flex-row flex-col flex gap-7">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7">
               {!userInfo.isAdmin ? null : (
                 <>
                   <div className="flex-1">
@@ -241,7 +241,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* DOCUMENTO ID Y NUMERO DE DOCUMENTO */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <SelectForm
                   textDefault={"Seleccione Documento de ID"}
@@ -254,6 +254,7 @@ const EditarPerfil = () => {
                   defaultValue={location.state?.documentoIdentidad}
                   required={true}
                   selectName="documentoIdentidad"
+                  disabled={!userInfo.isAdmin}
                 />
               </div>
 
@@ -272,7 +273,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* PRIMER NOMBRE Y SEGUNDO NOMBRE */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Primer Nombre"}
@@ -302,7 +303,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* APELLIDO PATERNO Y APELLIDO MATERNO */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Apellido Paterno"}
@@ -331,7 +332,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* SEXO Y FECHA DE NACIMIENTO */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <SelectForm
                   textDefault={"Seleccione Sexo"}
@@ -361,7 +362,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* DIRECCION Y URBANIZACION */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Dirección"}
@@ -388,7 +389,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* DISTRITO, PROVINCIA, DEPARTAMENTO, PAIS */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row-reverse flex-col-reverse flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Distrito"}
@@ -440,7 +441,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* TELEFONO 1 Y TELEFONO 2 */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Teléfono 1 (WhatsApp)"}
@@ -467,7 +468,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* EMAIL */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Email"}
@@ -484,7 +485,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* HIJOS O HIJAS MENORES DE EDAD */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Hijos menores de edad hombre(s)"}
@@ -511,7 +512,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* DEPORTES Y PASATIEMPOS */}
-            <div className="md:flex-row flex-col flex gap-7">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7">
               <div className="flex-1">
                 <InputForm
                   labelText={"Deportes"}
@@ -542,7 +543,7 @@ const EditarPerfil = () => {
             </h2>
 
             {/* UNIVERSIDAD Y TITULO UNIVERSITARIO */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Universidad"}
@@ -581,7 +582,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* MAXIMO GRADO ACADEMICO, ESTUDIOS DE POSGRADO */}
-            <div className="md:flex-row flex-col flex gap-7">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7">
               <div className="flex-1">
                 <SelectForm
                   textDefault={"Seleccione Grado"}
@@ -618,7 +619,7 @@ const EditarPerfil = () => {
             </h2>
 
             {/* SECTOR, CARGO, CENTRO LABORAL */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <SelectForm
                   textDefault={"Selecciona Estado Laboral"}
@@ -660,7 +661,7 @@ const EditarPerfil = () => {
             </div>
 
             {/* GIRO O RUBRO */}
-            <div className="md:flex-row flex-col flex gap-7 mb-4">
+            <div className="md:flex-row flex-col flex-wrap flex gap-7 mb-4">
               <div className="flex-1">
                 <InputForm
                   labelText={"Giro o Rubro"}
