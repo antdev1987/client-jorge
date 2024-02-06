@@ -46,9 +46,9 @@ const LogIn = () => {
     <section className="max-w-[25rem] mx-auto my-32">
       <img src={UserAvatar} className="max-w-[10rem] mx-auto" />
       {/* TITLE */}
-      <h2 className="text-gray-600 mt-2 text-center text-[1.3rem]">
+      {/* <h2 className="text-gray-600 mt-2 text-center text-[1.3rem]">
         Iniciar Sesión
-      </h2>
+      </h2> */}
 
       <form onSubmit={onHandleSubmit}>
         {/* INPUTS */}
@@ -57,13 +57,13 @@ const LogIn = () => {
             className="block w-full py-2 px-3 border-b-[.1rem] border-[#3a7fc2] outline-none mb-5"
             type="email"
             name="email"
-            placeholder="Email del Usuario"
+            placeholder="Correo electrónico"
           />
           <input
             className="block w-full py-2 px-3 border-b-[.1rem] border-[#3a7fc2] outline-none"
             type="text"
             name="password"
-            placeholder="Contraseña del Usuario"
+            placeholder="Contraseña"
           />
         </div>
 
@@ -73,13 +73,13 @@ const LogIn = () => {
           type="submit"
           disabled={loginLoading}
         >
-          {loginLoading ? "...cargando" : "Iniciar"}
+          {loginLoading ? "...cargando" : "Iniciar Sesión"}
         </button>
       </form>
       <p className="text-center py-5 font-[500] text-gray-600">
-        ¿Olvidaste Tú{" "}
+        Restablecer mi{" "}
         <Link to={"/olvide-password"} className="text-sky-600">
-          Contraseña?
+          contraseña
         </Link>
       </p>
     </section>

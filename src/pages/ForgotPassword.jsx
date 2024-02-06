@@ -21,7 +21,7 @@ const ForgotPassword = () => {
     }
 
     try {
-      setLoading(true)
+      setLoading(true);
       await axios.post(
         `${import.meta.env.VITE_BASE_URL}/users/olvidepassword`,
         userData
@@ -39,7 +39,8 @@ const ForgotPassword = () => {
       <img src={ForgotPasswordAvatar} className="max-w-[10rem] mx-auto" />
       {/* TITLE */}
       <h2 className="text-gray-600 mt-2 text-center text-[1.3rem]">
-        ¿Olvidaste Tú Contraseña?
+        {/* ¿Olvidaste Tú Contraseña? */}
+        Enviaremos un código de seguridad para que cambies tu contraseña
       </h2>
 
       <form onSubmit={handleForgotPassword}>
@@ -49,7 +50,7 @@ const ForgotPassword = () => {
             className="block w-full py-2 px-3 border-b-[.1rem] border-[#3a7fc2] outline-none"
             type="email"
             name="email"
-            placeholder="Email del Usuario"
+            placeholder="Correo electrónico"
           />
         </div>
 
@@ -59,22 +60,19 @@ const ForgotPassword = () => {
           type="submit"
           disabled={loading}
         >
-          {
-            loading ? '...enviando' : "Enviar"
-          }
+          {loading ? "...enviando" : "Enviar"}
         </button>
       </form>
 
       <div className="my-4">
-        <p className="text-center font-[500] text-gray-600 mb-2">
+        {/* <p className="text-center font-[500] text-gray-600 mb-2">
           Recupera tu cuenta mandando tu email/correo.
-        </p>
+        </p> */}
 
         <p className="text-center font-[500] text-gray-600">
-          ¿Recordaste Tú{" "}
-          <Link to={"/"} className="text-sky-600">
-            Contraseña?
-          </Link>
+          {" "}
+          Iniciar sesión
+          <Link to={"/"} className="text-[#3A7FC2]"> aquí</Link>
         </p>
       </div>
     </section>
