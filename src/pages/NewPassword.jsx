@@ -38,10 +38,10 @@ const NewPassword = () => {
       <img src={NewPasswordAvatar} className="max-w-[10rem] mx-auto" />
       {/* TITLE */}
       <h2 className="text-gray-600 mt-2 text-center text-[1.3rem]">
-        ¡Recupera Tú Cuenta!
+        Restablece tu contraseña
       </h2>
       <p className="text-center bg-yellow-500 rounded mt-3 py-4">
-        Enviamos un código de verificación a tu gmail.
+        Hemos enviado el código de seguridad a tu email
       </p>
 
       <form onSubmit={handleForgotPassword} action="">
@@ -72,19 +72,19 @@ const NewPassword = () => {
           className="bg-[#3A7FC2] text-white hover:bg-[#326597] rounded py-2 uppercase tracking-wider block w-full transition-all duration-300"
           type="submit"
         >
-          Recuperar
+          Guardar contraseña nueva
         </button>
       </form>
 
       <div className="my-4">
-        <p className="text-center font-[500] text-gray-600 mb-2">
+        {/* <p className="text-center font-[500] text-gray-600 mb-2">
           Recupera tu cuenta mediante proporcionando tu nueva contraseña.
-        </p>
+  </p> */}
 
         <p className="text-center font-[500] text-gray-600">
-          ¿Recordaste Tú{" "}
+          Regresa a{" "}
           <Link to={"/"} className="text-sky-600">
-            Contraseña?
+            Iniciar sesión
           </Link>
         </p>
       </div>
