@@ -319,6 +319,8 @@ const ImportUsers = ({ setRefreshRender }) => {
     const reader = new FileReader();
 
     const formating = (date) => {
+      if (!date) return;
+
       const isoFormat = new Date(
         Math.round((date - 25569) * 864e5)
       ).toISOString();
@@ -331,12 +333,17 @@ const ImportUsers = ({ setRefreshRender }) => {
       const anio = fecha.getUTCFullYear();
 
       // Formatear la fecha como "dd/mm/yyyy"
-      const fechaFormateada = anio + '-' + (mes < 10 ? '0' : '') + mes + '-' + (dia < 10 ? '0' : '') + dia;
+      const fechaFormateada =
+        anio +
+        '-' +
+        (mes < 10 ? '0' : '') +
+        mes +
+        '-' +
+        (dia < 10 ? '0' : '') +
+        dia;
 
       return fechaFormateada;
     };
-    
-    
 
     reader.onload = async (event) => {
       const workbook = XLSX.read(event.target.result, { type: 'binary' });
@@ -348,6 +355,7 @@ const ImportUsers = ({ setRefreshRender }) => {
         const fechaNacimiento = formating(item.fechaNacimiento);
         const fechaIncorporacion = formating(item.fechaIncorporacion);
         const fechaTitulacion = formating(item.fechaTitulacion);
+        const fechaInicio = formating(item.fechaInicio);
 
         console.log(fechaNacimiento);
 
@@ -356,6 +364,7 @@ const ImportUsers = ({ setRefreshRender }) => {
           fechaIncorporacion,
           fechaNacimiento,
           fechaTitulacion,
+          fechaInicio,
         };
       });
       // setData(data);
