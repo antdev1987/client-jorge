@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const ModalComponent = ({
   onClick = () => {},
   textBtn,
   titleModal,
   children,
-  className = "block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  className = 'block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800',
+  SecondaryBtn = null,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -17,15 +18,19 @@ const ModalComponent = ({
   return (
     <>
       {/* <!-- Modal button --> */}
-      <button
-        data-modal-target="default-modal"
-        data-modal-toggle="default-modal"
-        className={className}
-        onClick={mostrarModal}
-        type="button"
-      >
-        {textBtn}
-      </button>
+      <div className="flex gap-5">
+        <button
+          data-modal-target="default-modal"
+          data-modal-toggle="default-modal"
+          className={className}
+          onClick={mostrarModal}
+          type="button"
+        >
+          {textBtn}
+        </button>
+
+        {SecondaryBtn && <SecondaryBtn />}
+      </div>
 
       {showModal && (
         <>
