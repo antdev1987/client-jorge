@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
+import formatDateSinHora from '../utils/formatDateSinHora';
 
 const GestionarUsuarios = () => {
   const [filtering, setFiltering] = useState('');
@@ -317,21 +318,56 @@ const ImportUsers = ({ setRefreshRender }) => {
 
     const reader = new FileReader();
 
+    const formating = (date) => {
+      const isoFormat = new Date(
+        Math.round((date - 25569) * 864e5)
+      ).toISOString();
+
+      const fecha = new Date(isoFormat);
+
+      // Obtener el día, mes y año
+      const dia = fecha.getUTCDate();
+      const mes = fecha.getUTCMonth() + 1; // Se suma 1 porque los meses en JavaScript van de 0 a 11
+      const anio = fecha.getUTCFullYear();
+
+      // Formatear la fecha como "dd/mm/yyyy"
+      const fechaFormateada = anio + '-' + (mes < 10 ? '0' : '') + mes + '-' + (dia < 10 ? '0' : '') + dia;
+
+      return fechaFormateada;
+    };
+    
+    
+
     reader.onload = async (event) => {
       const workbook = XLSX.read(event.target.result, { type: 'binary' });
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
       const data = XLSX.utils.sheet_to_json(sheet);
+
+      const formatDates = data.map((item) => {
+        const fechaNacimiento = formating(item.fechaNacimiento);
+        const fechaIncorporacion = formating(item.fechaIncorporacion);
+        const fechaTitulacion = formating(item.fechaTitulacion);
+
+        console.log(fechaNacimiento);
+
+        return {
+          ...item,
+          fechaIncorporacion,
+          fechaNacimiento,
+          fechaTitulacion,
+        };
+      });
       // setData(data);
 
-      console.log(data);
+      console.log(formatDates);
 
-      // return
+      // return;
 
       try {
         const respuesta = await axios.post(
           `${import.meta.env.VITE_BASE_URL}/users/register-importing`,
-          data
+          formatDates
         );
         // setRefreshRender((prev) => !prev);
         console.log(respuesta);
