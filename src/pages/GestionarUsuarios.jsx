@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
-import formatDateSinHora from '../utils/formatDateSinHora';
 
 const GestionarUsuarios = () => {
   const [filtering, setFiltering] = useState('');
@@ -35,7 +34,7 @@ const GestionarUsuarios = () => {
       apellidoMaterno: formData.get('apellidoMaterno'),
       fechaNacimiento: formData.get('fechaNacimiento'),
       sexo: formData.get('sexo'),
-      perfilImagen: formData.get('perfilImagen'),
+      // perfilImagen: formData.get('perfilImagen'),
     };
 
     try {
@@ -83,7 +82,7 @@ const GestionarUsuarios = () => {
             )}
           >
             <form ref={formRef} onSubmit={handleCreateUser}>
-              <div className="flex md:flex-row flex-col gap-7 mb-4">
+              {/* <div className="flex md:flex-row flex-col gap-7 mb-4">
                 <div className="flex-1">
                   <InputForm
                     labelText={'Imagen'}
@@ -94,7 +93,7 @@ const GestionarUsuarios = () => {
                     }}
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div className="flex md:flex-row flex-col gap-7">
                 <div className="flex-1">
@@ -103,8 +102,7 @@ const GestionarUsuarios = () => {
                     labelText={'Documento de Identidad'}
                     options={[
                       { value: 'dni', text: 'DNI' },
-                      { value: 'cd', text: 'CE' },
-                      { value: 'otro', text: 'OTRO' },
+                      { value: 'ce', text: 'CE' },
                     ]}
                     required={true}
                     selectName="documentoIdentidad"
@@ -113,7 +111,7 @@ const GestionarUsuarios = () => {
 
                 <div className="flex-1">
                   <InputForm
-                    labelText={'Número de Documento de Identidad'}
+                    labelText={'No. de Doc. de Identidad'}
                     inputProps={{
                       type: 'text',
                       placeholder: 'A1111111111C',
