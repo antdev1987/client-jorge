@@ -66,6 +66,7 @@ const PersonalSection = ({
               className="bg-gray-300"
               onChange={handleProfileImg}
               disabled={!isEditing}
+              accept='image/png, image/jpeg, image/jpg'
             />
           </label>
         )}
