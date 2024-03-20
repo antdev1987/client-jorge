@@ -97,7 +97,7 @@ const AcademicSection = ({
       <div className="flex gap-10 mb-10 pb-10 border-b-8 border-dashed">
         <div style={{ flex: 2 }}>
           <InputForm
-            labelText={'Universidad'}
+            labelText={'Título'}
             inputProps={{
               type: 'text',
               name: 'tituloUniversitario',
