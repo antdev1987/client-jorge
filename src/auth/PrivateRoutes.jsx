@@ -5,7 +5,7 @@ import AppContext from "../context/AppProvider";
 const PrivateRoutes = () => {
   const { userInfo } = useContext(AppContext);
 
-  return userInfo?.token ? <Outlet /> : <Navigate to={"/LogIn"} />;
+  return userInfo?.token ? <Outlet /> : <Navigate to={"/"} />;
 };
 
 export default PrivateRoutes;
