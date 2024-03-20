@@ -15,6 +15,7 @@ const AcademicSection = ({
   id,
 }) => {
   const [loading, setLoading] = useState(false);
+  const [recargarPdf, setRecargarPdf] = useState(false);
 
   const handleChildChange = (e) => {
     const [name, idx] = e.target.name.split('-');
@@ -33,6 +34,14 @@ const AcademicSection = ({
       ...prev,
       posgrados: [...(data.posgrados || []), {}],
     }));
+  };
+
+  const handleRecarga = () => {
+    setRecargarPdf(true);
+
+    setTimeout(() => {
+      setRecargarPdf(false);
+    }, 2000);
   };
 
   const handlePdf = async (e) => {
@@ -181,12 +190,27 @@ const AcademicSection = ({
       )}
 
       {data.resumePersonal[0]?.cloudinary_url && (
-        <iframe
-          src={`https://docs.google.com/gview?url=${data.resumePersonal[0].cloudinary_url}&embedded=true`}
-          width={'100%'}
-          height={600}
-          frameBorder="0"
-        ></iframe>
+        <>
+          <button
+            type="button"
+            onClick={handleRecarga}
+            className="bg-[#767676] text-white px-3 py-2 rounded-md text-lg disabled:bg-black/70 inline-block mb-5"
+          >
+            Recargar visualizacion
+          </button>
+
+          {recargarPdf ? (
+            <p>Recargando visualizacion de pdf</p>
+          ) : (
+            <iframe
+              loading="lazy"
+              src={`https://docs.google.com/gview?url=${data.resumePersonal[0].cloudinary_url}&embedded=true`}
+              width={'100%'}
+              height={600}
+              frameBorder="0"
+            ></iframe>
+          )}
+        </>
       )}
     </ContainerSection>
   );
