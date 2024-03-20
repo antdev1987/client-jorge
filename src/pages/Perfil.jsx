@@ -237,6 +237,8 @@ const Perfil = () => {
           data={userPerfilInfo}
           isEditing={isEditing}
           setUserPerfilInfo={setUserPerfilInfo}
+          setRefresh={setRefresh}
+          id={userPerfilInfo._id}
         />
 
         <ActividadesSection data={userPerfilInfo} isEditing={isEditing} />

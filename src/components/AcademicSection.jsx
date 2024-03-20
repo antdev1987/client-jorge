@@ -1,9 +1,21 @@
 /* eslint-disable react/prop-types */
+import { useState } from 'react';
 import ContainerSection from './ContainerSection';
 import InputForm from './InputForm';
 import SelectForm from './SelectForm';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { getError } from '../utils/getError';
 
-const AcademicSection = ({ data, isEditing, setUserPerfilInfo }) => {
+const AcademicSection = ({
+  data,
+  isEditing,
+  setUserPerfilInfo,
+  setRefresh,
+  id,
+}) => {
+  const [loading, setLoading] = useState(false);
+
   const handleChildChange = (e) => {
     const [name, idx] = e.target.name.split('-');
 
@@ -21,6 +33,35 @@ const AcademicSection = ({ data, isEditing, setUserPerfilInfo }) => {
       ...prev,
       posgrados: [...(data.posgrados || []), {}],
     }));
+  };
+
+  const handlePdf = async (e) => {
+    const file = e.target.files[0];
+
+    console.log(file);
+
+    const confirmChange = confirm('Deseas agregar/cambiar el pdf?');
+    if (!confirmChange) return;
+
+    setLoading(true);
+
+    const formData = new FormData();
+    formData.append('uploadImages', file);
+
+    console.log('Todo bien');
+    try {
+      const { data } = await axios.patch(
+        `${import.meta.env.VITE_BASE_URL}/users/add-resume/${id}`,
+        formData
+      );
+      console.log(data);
+      setRefresh((prev) => !prev);
+    } catch (error) {
+      console.log(error);
+      toast.error(getError(error));
+    } finally {
+      setLoading(false);
+    }
   };
 
   console.log(data);
@@ -117,6 +158,34 @@ const AcademicSection = ({ data, isEditing, setUserPerfilInfo }) => {
         + ADD ITEM (permite agregar otra/s línea/s de "Estudio de posgrado" y
         "Descripcion")
       </button>
+
+      {loading ? (
+        <p className='block my-5'>Subiendo</p>
+      ) : (
+        <label className="block my-5">
+          <span className="bg-[#767676] text-white px-3 py-4 rounded-md text-lg disabled:bg-black/70 inline-block">
+            ADJUNTAR CV (opción para adjuntar un PDF), si ya tiene uno, podrá
+            visualizarlo y reemplazarlo
+          </span>
+
+          <input
+            type="file"
+            accept="application/pdf"
+            hidden
+            onChange={handlePdf}
+            value={''}
+          />
+        </label>
+      )}
+
+      {data.resumePersonal[0]?.cloudinary_url && (
+        <iframe
+          src={`https://docs.google.com/gview?url=${data.resumePersonal[0].cloudinary_url}&embedded=true`}
+          width={'100%'}
+          height={600}
+          frameBorder="0"
+        ></iframe>
+      )}
     </ContainerSection>
   );
 };

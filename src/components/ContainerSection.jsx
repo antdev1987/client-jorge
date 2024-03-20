@@ -13,7 +13,7 @@ const ContainerSection = ({ title, children, titleInside, className = 'mb-10' })
           {title}
         </h2>
       )}
-      <div className="px-4 py-5">{children}</div>
+      <div className="px-10 py-5">{children}</div>
     </div>
   </section>
 );
