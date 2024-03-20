@@ -6,7 +6,7 @@ import SelectForm from './SelectForm';
 const GeneralSection = ({ data, isEditing }) => {
   return (
     <ContainerSection title={'informacion general'}>
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row md:items-end mb-10">
         <InputForm
           labelText={'Última cuota pagada'}
           inputProps={{
@@ -42,7 +42,7 @@ const GeneralSection = ({ data, isEditing }) => {
         />
       </div>
 
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row md:items-end mb-10">
         <div style={{ flex: 2 }}>
           <SelectForm
             textDefault={'Seleccione Estado'}

@@ -18,10 +18,11 @@ import ActividadesSection from '../components/ActividadesSection';
 import GeneralSection from '../components/GeneralSection';
 
 const Perfil = () => {
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(false);
   const { userInfo } = useContext(AppContext);
-  const [userPerfilInfo, setUserPerfilInfo] = useState();
+  const [userPerfilInfo, setUserPerfilInfo] = useState({});
   const navigate = useNavigate();
   const params = useParams();
   const [isEditing, setIsEditing] = useState(false);
@@ -46,6 +47,7 @@ const Perfil = () => {
 
         setUserPerfilInfo(data);
       } catch (error) {
+        setError(getError(error));
         toast.error(getError(error));
       } finally {
         setLoading(false);
@@ -93,7 +95,6 @@ const Perfil = () => {
       direccion: formData.get('direccion'),
       urbanizacion: formData.get('urbanizacion'),
       children: userPerfilInfo?.children || [],
-
 
       telefono1WhatsApp: formData.get('telefono1WhatsApp'),
       telefono2: formData.get('telefono2'),
@@ -176,14 +177,22 @@ const Perfil = () => {
 
   if (loading)
     return (
-      <div className="container max-w-[1200px] mx-auto my-10">
+      <div className="max-w-[1200px] mx-auto my-10">
         <p>Cargando</p>
       </div>
     );
 
+  if (error) {
+    return (
+      <div className="max-w-[1200px] mx-auto my-10">
+        <p>{error}</p>
+      </div>
+    );
+  }
+
   return (
-    <section className="container max-w-[1200px] mx-auto my-10">
-      <div className="flex items-center gap-5 mb-5">
+    <section className="max-w-[1200px] mx-auto my-10 px-5">
+      <div className="flex md:items-center flex-col md:flex-row gap-5 mb-5">
         {params?.perfilId && userInfo.isAdmin && (
           <button
             className="font-bold cursor-pointer"
@@ -210,12 +219,12 @@ const Perfil = () => {
         )}
       </div>
 
-      <form className="container" onSubmit={handleSave}>
+      <form className="" onSubmit={handleSave}>
         <PersonalSection
           isAdmin={userInfo.isAdmin}
           isEditing={isEditing}
           data={userPerfilInfo}
-          id={userPerfilInfo._id}
+          id={userPerfilInfo?._id}
           setRefresh={setRefresh}
         >
           <ChildSection
@@ -238,7 +247,7 @@ const Perfil = () => {
           isEditing={isEditing}
           setUserPerfilInfo={setUserPerfilInfo}
           setRefresh={setRefresh}
-          id={userPerfilInfo._id}
+          id={userPerfilInfo?._id}
         />
 
         <ActividadesSection data={userPerfilInfo} isEditing={isEditing} />

@@ -7,7 +7,7 @@ const LaboralSection = ({ data, isEditing }) => {
   console.log(data)
   return (
     <ContainerSection title={'Laboral'}>
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <SelectForm
           textDefault={'Sector'}
           labelText={'Sector'}
@@ -31,7 +31,7 @@ const LaboralSection = ({ data, isEditing }) => {
         />
       </div>
 
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <InputForm
           labelText={'Centro Laboral'}
           inputProps={{
@@ -53,7 +53,7 @@ const LaboralSection = ({ data, isEditing }) => {
         />
       </div>
 
-      <div className="flex gap-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end">
         <InputForm
           labelText={'Cargo'}
           inputProps={{

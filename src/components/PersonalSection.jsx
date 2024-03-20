@@ -49,7 +49,7 @@ const PersonalSection = ({
 
   return (
     <ContainerSection title={'personal'}>
-      <div className="flex items-center gap-5 mb-10">
+      <div className="flex flex-col md:flex-row items-center gap-5 mb-10">
         <img
           src={data.image[0]?.cloudinary_url || UserAvatar}
           loading="lazy"
@@ -63,7 +63,7 @@ const PersonalSection = ({
             <span className="block text-xl mb-2">Fotografía</span>
             <input
               type="file"
-              className="bg-gray-300"
+              className="bg-gray-300 w-full"
               onChange={handleProfileImg}
               disabled={!isEditing}
               accept='image/png, image/jpeg, image/jpg'
@@ -72,7 +72,7 @@ const PersonalSection = ({
         )}
       </div>
 
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <SelectForm
           textDefault={'Seleccione Documento de ID'}
           labelText={'Tipo documento de identidad'}
@@ -107,7 +107,7 @@ const PersonalSection = ({
         />
       </div>
 
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <InputForm
           labelText={'Primer Nombre'}
           inputProps={{
@@ -132,7 +132,7 @@ const PersonalSection = ({
         />
       </div>
 
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <InputForm
           labelText={'Apellido Paterno'}
           inputProps={{
@@ -156,7 +156,7 @@ const PersonalSection = ({
         />
       </div>
 
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <SelectForm
           textDefault={'Seleccione Sexo'}
           labelText={'Sexo'}

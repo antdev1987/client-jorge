@@ -1,10 +1,17 @@
 /* eslint-disable react/prop-types */
-import { departamentos, distritos, provincias } from '../utils/localizacion';
+import { useState } from 'react';
 import ContainerSection from './ContainerSection';
 import InputForm from './InputForm';
 import SelectForm from './SelectForm';
+import { departamentosObjeto } from '../utils/localizacion';
 
 const ContactSection = ({ isAdmin, isEditing, data }) => {
+  const [ubicacion, setUbicacion] = useState({
+    depa: data?.departamento || '',
+    provincia: data?.provincia || '',
+    distrito: data?.distrito || '',
+  });
+
   const isDisabledAdmin = !(isAdmin && isEditing);
 
   const formatArray = (data) => {
@@ -12,7 +19,7 @@ const ContactSection = ({ isAdmin, isEditing, data }) => {
   };
   return (
     <ContainerSection title={'Contacto'}>
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <InputForm
           labelText={'Teléfono 1 (WhatsApp)'}
           inputProps={{
@@ -48,7 +55,7 @@ const ContactSection = ({ isAdmin, isEditing, data }) => {
         />
       </div>
 
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row md:items-end mb-10">
         <div style={{ flex: 3 }}>
           <InputForm
             labelText={'Dirección'}
@@ -76,34 +83,50 @@ const ContactSection = ({ isAdmin, isEditing, data }) => {
         </div>
       </div>
 
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <SelectForm
           textDefault={'Seleccione Departamento'}
           labelText={'Departamento'}
-          options={formatArray(departamentos)}
+          options={formatArray(Object.keys(departamentosObjeto))}
+          onChange={(e) =>
+            setUbicacion({ depa: e.target.value, provincia: '', distrito: '' })
+          }
           defaultValue={data?.departamento}
           selectName="departamento"
           disabled={!isEditing}
         />
-        <SelectForm
-          textDefault={'Seleccione Provincia'}
-          labelText={'Provincia'}
-          options={formatArray(provincias)}
-          defaultValue={data?.provincia}
-          selectName="provincia"
-          disabled={!isEditing}
-        />
-        <SelectForm
-          textDefault={'Seleccione Distrito'}
-          labelText={'Distrito'}
-          options={formatArray(distritos)}
-          defaultValue={data?.distrito}
-          selectName="distrito"
-          disabled={!isEditing}
-        />
+
+        {ubicacion.depa && (
+          <SelectForm
+            textDefault={'Seleccione Provincia'}
+            labelText={'Provincia'}
+            options={formatArray(
+              Object.keys(departamentosObjeto[ubicacion.depa])
+            )}
+            onChange={(e) =>
+              setUbicacion((prev) => ({ ...prev, provincia: e.target.value, distrito: '' }))
+            }
+            defaultValue={data?.provincia}
+            selectName="provincia"
+            disabled={!isEditing}
+          />
+        )}
+
+        {ubicacion.provincia && (
+          <SelectForm
+            textDefault={'Seleccione Distrito'}
+            labelText={'Distrito'}
+            options={formatArray(
+              departamentosObjeto[ubicacion.depa][ubicacion.provincia]
+            )}
+            defaultValue={data?.distrito}
+            selectName="distrito"
+            disabled={!isEditing}
+          />
+        )}
       </div>
 
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <InputForm
           labelText={'Linkedin'}
           inputProps={{

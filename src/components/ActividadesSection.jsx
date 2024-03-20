@@ -5,7 +5,7 @@ import InputForm from './InputForm';
 const ActividadesSection = ({ data, isEditing }) => {
   return (
     <ContainerSection title={'Actividades'}>
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row items-end mb-10">
         <InputForm
           labelText={'Desporte(s) que practicas'}
           inputProps={{

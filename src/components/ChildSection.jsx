@@ -25,7 +25,10 @@ const ChildSection = ({ data, isEditing, setUserPerfilInfo }) => {
   return (
     <ContainerSection titleInside={true} title={'Hijos menores (De 18 años)'}>
       {data.map((item, idx) => (
-        <div key={idx} className="flex gap-10 mb-10">
+        <div
+          key={idx}
+          className="flex gap-10 flex-col md:flex-row items-end mb-10 pb-5 border-b-2 border-black"
+        >
           <InputForm
             labelText={'Nombre (sin apellidos)'}
             inputProps={{
@@ -80,7 +83,7 @@ const ChildSection = ({ data, isEditing, setUserPerfilInfo }) => {
         onClick={handleChildAdd}
         disabled={!isEditing}
       >
-        + ADD ITEM (permite agregar la información de otro hijo/a)
+        + ADD ITEM
       </button>
     </ContainerSection>
   );

@@ -68,7 +68,7 @@ const AcademicSection = ({
 
   return (
     <ContainerSection title={'academica'}>
-      <div className="flex gap-10 mb-10">
+      <div className="flex gap-10 flex-col md:flex-row md:items-end mb-10">
         <div style={{ flex: 2 }}>
           <InputForm
             labelText={'Universidad'}
@@ -94,7 +94,7 @@ const AcademicSection = ({
         </div>
       </div>
 
-      <div className="flex gap-10 mb-10 pb-10 border-b-8 border-dashed">
+      <div className="flex gap-10 flex-col md:flex-row md:items-end mb-10 pb-10 border-b-8 border-dashed">
         <div style={{ flex: 2 }}>
           <InputForm
             labelText={'Título'}
@@ -121,7 +121,10 @@ const AcademicSection = ({
       </div>
 
       {data?.posgrados?.map((item, idx) => (
-        <div key={idx} className="flex gap-10 mb-10">
+        <div
+          key={idx}
+          className="flex gap-10 flex-col md:flex-row items-end border-b-2 border-black pb-5 mb-10"
+        >
           <SelectForm
             textDefault={'Seleccione estudio'}
             labelText={'Estudios de posgrado'}
@@ -155,12 +158,11 @@ const AcademicSection = ({
         onClick={handlePosGradoAdd}
         disabled={!isEditing}
       >
-        + ADD ITEM (permite agregar otra/s línea/s de "Estudio de posgrado" y
-        "Descripcion")
+        + ADD ITEM
       </button>
 
       {loading ? (
-        <p className='block my-5'>Subiendo</p>
+        <p className="block my-5">Subiendo</p>
       ) : (
         <label className="block my-5">
           <span className="bg-[#767676] text-white px-3 py-4 rounded-md text-lg disabled:bg-black/70 inline-block">
