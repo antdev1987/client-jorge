@@ -15,7 +15,6 @@ const AcademicSection = ({
   id,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [recargarPdf, setRecargarPdf] = useState(false);
 
   const handleChildChange = (e) => {
     const [name, idx] = e.target.name.split('-');
@@ -34,14 +33,6 @@ const AcademicSection = ({
       ...prev,
       posgrados: [...(data.posgrados || []), {}],
     }));
-  };
-
-  const handleRecarga = () => {
-    setRecargarPdf(true);
-
-    setTimeout(() => {
-      setRecargarPdf(false);
-    }, 2000);
   };
 
   const handlePdf = async (e) => {

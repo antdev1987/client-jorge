@@ -104,11 +104,15 @@ const ContactSection = ({ isAdmin, isEditing, data }) => {
               Object.keys(departamentosObjeto[ubicacion.depa])
             )}
             onChange={(e) =>
-              setUbicacion((prev) => ({ ...prev, provincia: e.target.value, distrito: '' }))
+              setUbicacion((prev) => ({
+                ...prev,
+                provincia: e.target.value,
+                distrito: '',
+              }))
             }
-            defaultValue={data?.provincia}
             selectName="provincia"
             disabled={!isEditing}
+            extra={{ value: ubicacion?.provincia }}
           />
         )}
 
@@ -119,9 +123,15 @@ const ContactSection = ({ isAdmin, isEditing, data }) => {
             options={formatArray(
               departamentosObjeto[ubicacion.depa][ubicacion.provincia]
             )}
-            defaultValue={data?.distrito}
+            onChange={(e) =>
+              setUbicacion((prev) => ({
+                ...prev,
+                distrito: e.target.value,
+              }))
+            }
             selectName="distrito"
             disabled={!isEditing}
+            extra={{ value: ubicacion?.distrito }}
           />
         )}
       </div>

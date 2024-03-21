@@ -7,7 +7,8 @@ const SelectForm = ({
   onChange,
   required,
   defaultValue,
-  disabled
+  disabled,
+  extra
 }) => {
   console.log(defaultValue)
   return (
@@ -20,6 +21,7 @@ const SelectForm = ({
         required={required}
         defaultValue={defaultValue}
         disabled={disabled}
+        {...extra}
       >
         <option value="">-- {textDefault} --</option>
         {options?.map((option, idx) => {
